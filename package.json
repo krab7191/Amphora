@@ -2,19 +2,41 @@
   "name": "amphora",
   "version": "0.1.0",
   "private": true,
+  "main": "server/server.js",
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.11.0"
+  },
   "dependencies": {
+    "axios": "^0.18.0",
+    "bcrypt": "^3.0.2",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "if-env": "^1.0.4",
+    "morgan": "^1.9.1",
     "passport": "^0.4.0",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "2.0.5"
+    "path": "^0.12.7"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server/server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && yarn install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "engines": {
+    "node": "8.9.4",
+    "npm": "5.6.x",
+    "yarn": "1.4.0"
+  },
+  "license": "ISC",
+  "author": "Karsten Rabe",
   "eslintConfig": {
     "extends": "react-app"
   },
