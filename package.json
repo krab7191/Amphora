@@ -1,8 +1,24 @@
 {
-  "name": "amphora",
-  "version": "0.1.0",
-  "private": true,
+  "name": "Amphora",
+  "version": "1.0.0",
+  "description": "Pandora web client based on the native Linux client, Pithos",
   "main": "server/server.js",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server/server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && yarn install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "engines": {
+    "node": "8.9.4",
+    "npm": "5.6.x",
+    "yarn": "1.4.0"
+  },
+  "author": "Karsten Rabe (krab7191)",
+  "license": "ISC",
   "devDependencies": {
     "concurrently": "^3.5.0",
     "nodemon": "^1.11.0"
@@ -16,34 +32,6 @@
     "express-session": "^1.15.6",
     "if-env": "^1.0.4",
     "morgan": "^1.9.1",
-    "passport": "^0.4.0",
-    "path": "^0.12.7"
-  },
-  "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server/server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
-    "client": "cd client && npm run start",
-    "install": "cd client && yarn install",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "engines": {
-    "node": "8.9.4",
-    "npm": "5.6.x",
-    "yarn": "1.4.0"
-  },
-  "license": "ISC",
-  "author": "Karsten Rabe",
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+    "passport": "^0.4.0"
+  }
 }
