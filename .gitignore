@@ -9,7 +9,7 @@
 # production
 /build
 
-#Client modules
+# Client modules
 /client/node_modules
 
 # misc
