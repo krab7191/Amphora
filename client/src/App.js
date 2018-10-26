@@ -8,7 +8,7 @@ import AUTH from './utils/AUTH';
 // Bootstrap comps
 import Button from 'react-bootstrap/lib/Button';
 // or
-import { Button } from 'react-bootstrap';
+// import { Button } from 'react-bootstrap';
 
 
 class App extends React.Component {
