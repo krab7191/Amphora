@@ -10,7 +10,7 @@
 /build
 
 #Client modules
-/Client/node_modules
+/client/node_modules
 
 # misc
 .DS_Store
