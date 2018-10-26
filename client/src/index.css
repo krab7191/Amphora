@@ -1,4 +1,3 @@
-
 html {
   height: 100%;
   background-image: linear-gradient(#0F87F5, #3D52FF);
@@ -10,15 +9,7 @@ header {
   width: 100%;
 }
 
-h1 {
+header h1 {
   text-align: center;
   color: white;
-}
-
-#content {
-  margin: 65px auto 0 auto;
-  padding: 15px;
-  width: 85%;
-  max-width: 960px;
-  min-width: 350px;
 }

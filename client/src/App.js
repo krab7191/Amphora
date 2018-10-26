@@ -65,7 +65,7 @@ class App extends React.Component {
 		return (
 			<header>
 				<h1>
-					amphora
+					Amphora
           		</h1>
 			</header>			// <div className="App">
 			// 	{this.state.loggedIn && (
