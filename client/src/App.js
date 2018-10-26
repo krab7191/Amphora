@@ -5,6 +5,12 @@ import React from 'react';
 // import NoMatch from "./pages/NoMatch";
 import AUTH from './utils/AUTH';
 
+// Bootstrap comps
+import Button from 'react-bootstrap/lib/Button';
+// or
+import { Button } from 'react-bootstrap';
+
+
 class App extends React.Component {
 
 	constructor() {
