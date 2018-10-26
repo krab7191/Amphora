@@ -1,5 +1,5 @@
 {
-  "name": "Amphora",
+  "name": "amphora",
   "version": "1.0.0",
   "description": "Pandora web client based on the native Linux client, Pithos",
   "main": "server/server.js",
