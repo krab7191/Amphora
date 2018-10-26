@@ -1,0 +1,9 @@
+footer, h1 {
+    text-align: center;
+}
+#content {
+    margin: 25px auto;
+    width: 65%;
+    max-width: 960px;
+    min-width: 350px;
+}
