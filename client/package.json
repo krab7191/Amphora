@@ -1,11 +1,11 @@
 {
   "name": "amphora",
   "version": "1.0.0",
+  "description": "Pandora web client based on the native Linux client, Pithos",
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "axios": "^0.16.2",
-    "babel-loader": "^8.0.4",
     "react": "^16.0.0",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.0.0",
@@ -17,5 +17,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
