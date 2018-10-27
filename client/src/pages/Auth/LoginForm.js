@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
-import { Container, Row, Col } from '../../components/Grid';
-import { Card } from '../../components/Card';
-import { Input, FormBtn } from '../../components/Form';
+import Form from 'react-bootstrap/lib/Form';
+import FormGroup from 'react-bootstrap/lib/FormGroup';
+import FormControl from 'react-bootstrap/lib/FormControl';
+import Button from 'react-bootstrap/lib/Button';
 
-class LoginForm extends Component {
-  
-  constructor() {
-    super();
-    
+import "./auth.css";
+
+class LoginForm extends React.Component {
+
+	constructor() {
+		super();
+
 		this.state = {
 			username: '',
 			password: '',
@@ -24,7 +27,7 @@ class LoginForm extends Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault();
-		console.log('handleSubmit');
+		console.log('Submit login form');
 		this.props.login(this.state.username, this.state.password);
 		this.setState({
 			redirectTo: '/'
@@ -36,34 +39,44 @@ class LoginForm extends Component {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
 		} else {
 			return (
-				<Container>
-          <Row>
-            <Col size="md-3"></Col>
-            <Col size="md-6">
-              <Card title="Login to React Reading List">
-                <form style={{marginTop: 10}}>
-                  <label htmlFor="username">Username: </label>
-                  <Input
-                    type="text"
-                    name="username"
-                    value={this.state.username}
-                    onChange={this.handleChange}
-                  />
-                  <label htmlFor="password">Password: </label>
-                  <Input
-                    type="password"
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.handleChange}
-                  />
-                  <Link to="/signup">Register</Link>
-                  <FormBtn onClick={this.handleSubmit}>Login</FormBtn>
-                </form>
-              </Card>
-            </Col>
-            <Col size="md-3"></Col>
-          </Row>
-				</Container>
+				<>
+					<header>
+						<h1>Amphora</h1>
+					</header>
+					<Form className="abs-center" >
+						<FormGroup>
+							<p
+								className="white-text"
+							>Login to Pandora</p>
+							<FormControl
+								type="text"
+								name="username"
+								value={this.state.username}
+								placeholder="Username"
+								onChange={this.handleChange}
+							/>
+							<FormControl
+								type="password"
+								name="password"
+								value={this.state.password}
+								placeholder="Password"
+								onChange={this.handleChange}
+							/>
+							<Link
+								to="/signup"
+								className="white-text col-md-9"
+							>Create Pandora account</Link>
+							<Button
+								type="submit"
+								onClick={this.handleSubmit}
+								className="col-md-3"
+								bsStyle="info"
+							>
+								Log in
+						</Button>
+						</FormGroup>
+					</Form>
+				</>
 			)
 		}
 	}

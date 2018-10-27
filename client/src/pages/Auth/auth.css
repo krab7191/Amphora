@@ -1,0 +1,14 @@
+.white-text {
+    color: white;
+}
+
+.abs-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+}
+
+a:hover {
+    color: #00AED6;
+}

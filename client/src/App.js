@@ -1,14 +1,9 @@
 import React from 'react';
-// import { Route, Switch } from 'react-router-dom';
-// import LoginForm from './pages/Auth/LoginForm';
-// import SignupForm from './pages/Auth/SignupForm';
+import { Route, Switch } from 'react-router-dom';
+import LoginForm from './pages/Auth/LoginForm';
+import SignupForm from './pages/Auth/SignupForm';
 // import NoMatch from "./pages/NoMatch";
 import AUTH from './utils/AUTH';
-
-// Bootstrap comps
-import Button from 'react-bootstrap/lib/Button';
-// or
-// import { Button } from 'react-bootstrap';
 
 
 class App extends React.Component {
@@ -25,6 +20,7 @@ class App extends React.Component {
 	componentDidMount() {
 		AUTH.getUser().then(response => {
 			console.log(response.data);
+			// !! coerce falsy object value to true boolean
 			if (!!response.data.user) {
 				this.setState({
 					loggedIn: true,
@@ -50,6 +46,9 @@ class App extends React.Component {
 					user: null
 				});
 			}
+			else {
+				alert("error logging out");
+			}
 		});
 	}
 
@@ -69,32 +68,29 @@ class App extends React.Component {
 	render() {
 
 		return (
-			<header>
-				<h1>
-					Amphora
-          		</h1>
-			</header>			// <div className="App">
-			// 	{this.state.loggedIn && (
-			// 		<div>
-			// 			<Nav user={this.state.user} logout={this.logout} />
-			// 			<div className="main-view">
-			// 				<Switch>
-			// 					<Route exact path="/" component={() => <Books user={this.state.user} />} />
-			// 					<Route exact path="/books" component={() => <Books user={this.state.user} />} />
-			// 					<Route exact path="/books/:id" component={Detail} />
-			// 					<Route component={NoMatch} />
-			// 				</Switch>
-			// 			</div>
-			// 		</div>
-			// 	)}
-			// 	{!this.state.loggedIn && (
-			// 		<div className="auth-wrapper" style={{ paddingTop: 40 }}>
-			// 			<Route exact path="/" component={() => <LoginForm login={this.login} />} />
-			// 			<Route exact path="/books" component={() => <LoginForm user={this.login} />} />
-			// 			<Route exact path="/signup" component={SignupForm} />
-			// 		</div>
-			// 	)}
-			// </div>
+			<div className="App">
+			 {/* Logged in users receive: */}
+				{this.state.loggedIn && (
+					<div>
+						{/* <Nav user={this.state.user} logout={this.logout} /> */}
+						<div className="main-view">
+							<Switch>
+								{/* <Route exact path="/" component={() => <Books user={this.state.user} />} /> */}
+								{/* <Route exact path="/books" component={() => <Books user={this.state.user} />} /> */}
+								{/* <Route exact path="/books/:id" component={Detail} /> */}
+								{/* <Route component={NoMatch} /> */}
+							</Switch>
+						</div>
+					</div>
+				)}
+				{/* Non-authed users receive login / sign up pages */}
+				{!this.state.loggedIn && (
+					<div className="auth-wrapper" >
+						<Route exact path="/" component={() => <LoginForm login={this.login} />} />
+						<Route exact path="/signup" component={SignupForm} />
+					</div>
+				)}
+			</div>
 		);
 	}
 }
