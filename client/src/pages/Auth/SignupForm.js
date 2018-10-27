@@ -1,38 +1,45 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
-import { Container, Row, Col } from '../../components/Grid';
-import { Card } from '../../components/Card';
-import { Input, FormBtn } from '../../components/Form';
+import Form from 'react-bootstrap/lib/Form';
+import FormGroup from 'react-bootstrap/lib/FormGroup';
+import FormControl from 'react-bootstrap/lib/FormControl';
+import Button from 'react-bootstrap/lib/Button';
+
+import SimpleHeader from '../../components/SimpleHeader';
+
+
 import AUTH from '../../utils/AUTH';
+
+import "./auth.css";
 
 class SignupForm extends Component {
 
-	constructor() {
+  constructor() {
     super();
-    
-		this.state = {
+
+    this.state = {
       firstName: '',
       lastName: '',
-			username: '',
-			password: '',
-			confirmPassword: '',
-			redirectTo: null
-		};
+      email: '',
+      password: '',
+      confirmPassword: '',
+      redirectTo: null
+    };
   }
-  
-	handleChange = (event) => {
-		this.setState({
-			[event.target.name]: event.target.value
-		});
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   }
-  
-	handleSubmit = (event) => {
-		event.preventDefault();
-		// TODO - validate!
-		AUTH.signup({
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    // TODO - validate!
+    AUTH.signup({
       firstName: this.state.firstName,
       lastName: this.state.lastName,
-      username: this.state.username,
+      email: this.state.email,
       password: this.state.password
     }).then(response => {
       console.log(response);
@@ -46,64 +53,72 @@ class SignupForm extends Component {
       }
     });
   }
-  
-	render() {
-		if (this.state.redirectTo) {
-			return <Redirect to={{ pathname: this.state.redirectTo }} />
+
+  render() {
+    if (this.state.redirectTo) {
+      return <Redirect to={{ pathname: this.state.redirectTo }} />
     }
-    
-		return (
-      <Container>
-        <Row>
-          <Col size="md-3"></Col>
-          <Col size="md-6">
-            <Card title="Register for React Reading List">
-              <form style={{marginTop: 10}}>
-                <label htmlFor="username">First name: </label>
-                <Input
-                  type="text"
-                  name="firstName"
-                  value={this.state.firstName}
-                  onChange={this.handleChange}
-                />
-                <label htmlFor="username">Last name: </label>
-                <Input
-                  type="text"
-                  name="lastName"
-                  value={this.state.lastName}
-                  onChange={this.handleChange}
-                />
-                <label htmlFor="username">Username: </label>
-                <Input
-                  type="text"
-                  name="username"
-                  value={this.state.username}
-                  onChange={this.handleChange}
-                />
-                <label htmlFor="password">Password: </label>
-                <Input
-                  type="password"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.handleChange}
-                />
-                <label htmlFor="confirmPassword">Confirm Password: </label>
-                <Input
-                  type="password"
-                  name="confirmPassword"
-                  value={this.state.confirmPassword}
-                  onChange={this.handleChange}
-                />
-                <Link to="/">Login</Link>
-                <FormBtn onClick={this.handleSubmit}>Register</FormBtn>
-              </form>
-            </Card>
-          </Col>
-          <Col size="md-3"></Col>
-        </Row>
-      </Container>
-		)
-	}
+
+    return (
+      <>
+        <SimpleHeader />
+        <Form className="abs-center container width-40">
+          <FormGroup className="row">
+            <p
+              className="white-text"
+            >
+              Sign up for a Pandora account
+            </p>
+            <FormControl
+              type="text"
+              name="firstName"
+              value={this.state.firstName}
+              placeholder="First Name"
+              onChange={this.handleChange}
+            />
+            <FormControl
+              type="text"
+              name="lastName"
+              value={this.state.lastName}
+              placeholder="Last Name"
+              onChange={this.handleChange}
+            />
+            <FormControl
+              type="text"
+              name="email"
+              value={this.state.email}
+              placeholder="Email"
+              onChange={this.handleChange}
+            />
+            <FormControl
+              type="password"
+              name="password"
+              value={this.state.password}
+              placeholder="password"
+              onChange={this.handleChange}
+            />
+            <FormControl
+              type="password"
+              name="confirmPassword"
+              value={this.state.confirmPassword}
+              placeholder="confirm password"
+              onChange={this.handleChange}
+            />
+            <Link
+              to="/"
+              className="white-text col-md-3 pull-left"
+            >Login</Link>
+            <Button
+              type="submit"
+              onClick={this.handleSubmit}
+              className="col-md-3 pull-right"
+              bsStyle="info"
+            >Sign up</Button>
+          </FormGroup>
+        </Form>
+      </>
+    )
+  }
 }
 
 export default SignupForm;

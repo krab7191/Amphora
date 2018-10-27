@@ -5,6 +5,8 @@ import FormGroup from 'react-bootstrap/lib/FormGroup';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import Button from 'react-bootstrap/lib/Button';
 
+import SimpleHeader from '../../components/SimpleHeader';
+
 import "./auth.css";
 
 class LoginForm extends React.Component {
@@ -40,11 +42,9 @@ class LoginForm extends React.Component {
 		} else {
 			return (
 				<>
-					<header>
-						<h1>Amphora</h1>
-					</header>
-					<Form className="abs-center" >
-						<FormGroup>
+					<SimpleHeader />
+					<Form className="abs-center container width-40" >
+						<FormGroup className="row">
 							<p
 								className="white-text"
 							>Login to Pandora</p>
@@ -64,12 +64,12 @@ class LoginForm extends React.Component {
 							/>
 							<Link
 								to="/signup"
-								className="white-text col-md-9"
+								className="white-text col-md-5 pull-left"
 							>Create Pandora account</Link>
 							<Button
 								type="submit"
 								onClick={this.handleSubmit}
-								className="col-md-3"
+								className="col-md-3 pull-right"
 								bsStyle="info"
 							>
 								Log in
