@@ -65,11 +65,33 @@ class App extends React.Component {
 		});
 	}
 
+	validateLength = val => {
+		if (val.trim().length > 0) {
+			return 'success';
+		}
+		else if (val.trim().length === 0) {
+			return 'error';
+		}
+		return null;
+	}
+
+	validateEmail = email => {
+		const emailRegex = new RegExp(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/);
+		const test = emailRegex.test(email);
+		if (test) {
+			return 'success';
+		}
+		else if (!test) {
+			return 'error';
+		}
+		return null;
+	}
+
 	render() {
 
 		return (
 			<div className="App">
-			 {/* Logged in users receive: */}
+				{/* Logged in users receive: */}
 				{this.state.loggedIn && (
 					<div>
 						{/* <Nav user={this.state.user} logout={this.logout} /> */}
@@ -86,8 +108,8 @@ class App extends React.Component {
 				{/* Non-authed users receive login / sign up pages */}
 				{!this.state.loggedIn && (
 					<div className="auth-wrapper" >
-						<Route exact path="/" component={() => <LoginForm login={this.login} />} />
-						<Route exact path="/signup" component={SignupForm} />
+						<Route exact path="/" component={() => <LoginForm login={this.login} validateLength={this.validateLength} validateEmail={this.validateEmail} />} />
+						<Route exact path="/signup" component={() => <SignupForm validateLength={this.validateLength} validateEmail={this.validateEmail} />} />
 					</div>
 				)}
 			</div>

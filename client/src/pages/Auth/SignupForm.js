@@ -14,8 +14,8 @@ import "./auth.css";
 
 class SignupForm extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       firstName: '',
@@ -54,6 +54,16 @@ class SignupForm extends Component {
     });
   }
 
+  validatePassMatch = () => {
+    if (this.state.password !== this.state.confirmPassword) {
+      return 'error';
+    }
+    else if (this.state.password === this.state.confirmPassword) {
+      return 'success';
+    }
+    return null;
+  }
+
   render() {
     if (this.state.redirectTo) {
       return <Redirect to={{ pathname: this.state.redirectTo }} />
@@ -63,12 +73,14 @@ class SignupForm extends Component {
       <>
         <SimpleHeader />
         <Form className="abs-center container width-40">
-          <FormGroup className="row">
-            <p
-              className="white-text"
-            >
-              Sign up for a Pandora account
+          <p className="white-text">
+            Sign up for a Pandora account
             </p>
+          <FormGroup
+            controlId="signup-first-name"
+            className="row"
+            validationState={this.props.validateLength(this.state.firstName)}
+          >
             <FormControl
               type="text"
               name="firstName"
@@ -76,6 +88,13 @@ class SignupForm extends Component {
               placeholder="First Name"
               onChange={this.handleChange}
             />
+            <FormControl.Feedback />
+          </FormGroup>
+          <FormGroup
+            controlId="signup-last-name"
+            className="row"
+            validationState={this.props.validateLength(this.state.lastName)}
+          >
             <FormControl
               type="text"
               name="lastName"
@@ -83,6 +102,13 @@ class SignupForm extends Component {
               placeholder="Last Name"
               onChange={this.handleChange}
             />
+            <FormControl.Feedback />
+          </FormGroup>
+          <FormGroup
+            controlId="signup-email"
+            className="row"
+            validationState={this.props.validateEmail(this.state.email)}
+          >
             <FormControl
               type="text"
               name="email"
@@ -90,6 +116,13 @@ class SignupForm extends Component {
               placeholder="Email"
               onChange={this.handleChange}
             />
+            <FormControl.Feedback />
+          </FormGroup>
+          <FormGroup
+            controlId="signup-password"
+            className="row"
+            validationState={this.props.validateLength(this.state.password)}
+          >
             <FormControl
               type="password"
               name="password"
@@ -97,6 +130,13 @@ class SignupForm extends Component {
               placeholder="password"
               onChange={this.handleChange}
             />
+            <FormControl.Feedback />
+          </FormGroup>
+          <FormGroup
+            controlId="signup-confirm-password"
+            className="row"
+            validationState={this.validatePassMatch()}
+          >
             <FormControl
               type="password"
               name="confirmPassword"
@@ -104,17 +144,18 @@ class SignupForm extends Component {
               placeholder="confirm password"
               onChange={this.handleChange}
             />
-            <Link
-              to="/"
-              className="white-text col-md-3 pull-left"
-            >Login</Link>
-            <Button
-              type="submit"
-              onClick={this.handleSubmit}
-              className="col-md-3 pull-right"
-              bsStyle="info"
-            >Sign up</Button>
+            <FormControl.Feedback />
           </FormGroup>
+          <Link
+            to="/"
+            className="white-text col-md-3 pull-left"
+          >Login</Link>
+          <Button
+            type="submit"
+            onClick={this.handleSubmit}
+            className="col-md-3 pull-right"
+            bsStyle="info"
+          >Sign up</Button>
         </Form>
       </>
     )
