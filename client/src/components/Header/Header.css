@@ -24,9 +24,9 @@
 }
 
 #station-dropdown {
-    color: white;
+    background-color: #0F87F5;
 }
 
-#station-dropdown:focus {
-    background-color: #0F87F5;
+#station-dropdown, .navbar-default .navbar-toggle .icon-bar, .navbar-collapse.collapse.in>ul>li.dropdown.open>ul>li>a {
+    color: white;
 }

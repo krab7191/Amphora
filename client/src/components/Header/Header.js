@@ -23,18 +23,27 @@ class Header extends React.Component {
                 {
                     name: "Lamb of God"
                 }
-            ]
+            ],
+            currStation: "Metallica"
         };
+    }
+
+    changeStation = event => {
+        const { name } = event.target;
+        this.setState({
+            currStation: name
+        })
     }
 
     render() {
 
         return (
-            <Navbar fixedTop className="main-navbar">
+            <Navbar fixedTop collapseOnSelect className="main-navbar">
                 <Navbar.Header>
                     <Navbar.Brand>
                         <img src="images/logo.png" alt="Amphora logo" className="logo pull-left" />
                     </Navbar.Brand>
+                    <Navbar.Toggle />
                     <h1 className="pull-left white-text margin-left-10">Amphora</h1>
                 </Navbar.Header>
                 <Navbar.Collapse>
@@ -43,10 +52,10 @@ class Header extends React.Component {
                             <Glyphicon glyph="cog" className="white-text" />
                             <p className="inline padding-left-10 white-text">Settings</p>
                         </NavItem>
-                        <NavDropdown eventKey={1} title="Stations" id="station-dropdown">
+                        <NavDropdown eventKey={1} title={this.state.currStation} id="station-dropdown">
                             {
                                 this.state.stations.map((station, i) => (
-                                    <MenuItem eventKey={`1.${i}`}>{station.name}</MenuItem>
+                                    <MenuItem eventKey={`1.${i}`} key={i} name={station.name} onClick={this.changeStation}>{station.name}</MenuItem>
                                 ))
                             }
                         </NavDropdown>
