@@ -20,7 +20,7 @@ class App extends React.Component {
 	componentDidMount() {
 		AUTH.getUser().then(response => {
 			console.log(response.data);
-			// !! coerce falsy object value to true boolean
+			// !! coerce falsy object value to actual boolean
 			if (!!response.data.user) {
 				this.setState({
 					loggedIn: true,
@@ -37,19 +37,27 @@ class App extends React.Component {
 
 	logout = (event) => {
 		event.preventDefault();
+		if (this.state.user.Email === "Guest") {
+			this.setState({
+				loggedIn: false,
+				user: null
+			});
+		}
+		else {
+			AUTH.logout().then(response => {
+				console.log(response.data);
+				if (response.status === 200) {
+					this.setState({
+						loggedIn: false,
+						user: null
+					});
+				}
+				else {
+					alert("error logging out");
+				}
+			});
+		}
 
-		AUTH.logout().then(response => {
-			console.log(response.data);
-			if (response.status === 200) {
-				this.setState({
-					loggedIn: false,
-					user: null
-				});
-			}
-			else {
-				alert("error logging out");
-			}
-		});
 	}
 
 	login = (username, password) => {
@@ -61,6 +69,15 @@ class App extends React.Component {
 					loggedIn: true,
 					user: response.data.user
 				});
+			}
+		});
+	}
+	loginGuest = () => {
+		this.setState({
+			loggedIn: true,
+			user: {
+				Name: "Guest",
+				Email: "Guest"
 			}
 		});
 	}
@@ -87,16 +104,6 @@ class App extends React.Component {
 		return null;
 	}
 
-	loginGuest = () => {
-		this.setState({
-			loggedIn: true,
-			user: {
-				Name: "Guest",
-				Email: "Guest"
-			}
-		});
-	}
-
 	render() {
 
 		return (
@@ -106,13 +113,18 @@ class App extends React.Component {
 					<div className="main-view">
 						<Switch>
 							<Route exact path="/" component={() => <Amphora />} />
-							<Route component={() => <Amphora />} />
+							<Route component={NoMatch} />
 						</Switch>
 					</div>
 				)}
 				{/* Non-authed users receive login page */}
 				{!this.state.loggedIn && (
-					<Route exact path="/" component={() => <LoginForm login={this.login} loginGuest={this.loginGuest} validateLength={this.validateLength} validateEmail={this.validateEmail} />} />
+					<Route exact path="/" component={() => <LoginForm
+						login={this.login}
+						loginGuest={this.loginGuest}
+						validateLength={this.validateLength}
+						validateEmail={this.validateEmail}
+					/>} />
 				)}
 			</div>
 		);
