@@ -11,7 +11,7 @@ const Footer = props => {
         >
             <div className="hCenter">
                 <div className="controlBox">
-                    <Glyphicon glyph="play" />
+                    <Glyphicon glyph="pause" />
                 </div>
                 <div className="controlBox">
                     <Glyphicon glyph="fast-forward" />

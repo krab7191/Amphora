@@ -2,3 +2,7 @@ html {
   height: 100%;
   background-image: linear-gradient(#0F87F5, #3D52FF);
 }
+
+body {
+  background-color: rgba(0, 0, 0, 0);
+}

@@ -13,13 +13,34 @@ class App extends React.Component {
 
 		this.state = {
 			loggedIn: false,
-			user: null
+			user: null,
+			songs: [
+				{
+					img: "images/Sabaton.jpg",
+					title: "Evil Lies In Every Man",
+					artist: "Orden Ogan",
+					album: "Ravenhead",
+					length: "5:45"
+				},
+				{
+					img: "images/Gamma.jpg",
+					title: "Damn The Machine",
+					artist: "Gamma Ray",
+					album: "No World Order",
+				},
+				{
+					img: "images/Judas.jpg",
+					title: "One Shot At Glory",
+					artist: "Judas Priest",
+					album: "Painkiller",
+				}
+			]
 		};
 	}
 
 	componentDidMount() {
 		AUTH.getUser().then(response => {
-			console.log(response.data);
+			// console.log(response.data);
 			// !! coerce falsy object value to actual boolean
 			if (!!response.data.user) {
 				this.setState({
@@ -112,7 +133,7 @@ class App extends React.Component {
 				{this.state.loggedIn && (
 					<div className="main-view">
 						<Switch>
-							<Route exact path="/" component={() => <Amphora />} />
+							<Route exact path="/" component={() => <Amphora songs={this.state.songs} />} />
 							<Route component={NoMatch} />
 						</Switch>
 					</div>

@@ -1,0 +1,13 @@
+.album-art {
+    height: 120px;
+    width: auto;
+}
+
+.playing {
+    background-color: lightgray;
+}
+
+.song:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
