@@ -1,9 +1,17 @@
 import React from 'react';
+import './SimpleHeader.css';
 
 const SimpleHeader = () => {
     return (
         <header>
-            <h1>Amphora</h1>
+            <div>
+                <img
+                    alt="Amphora logo"
+                    src="images/logo.png"
+                    className="logo"
+                />
+                <h1>Amphora</h1>
+            </div>
         </header >
     )
 };

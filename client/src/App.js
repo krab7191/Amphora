@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import LoginForm from './pages/Auth/LoginForm';
-import SignupForm from './pages/Auth/SignupForm';
-// import NoMatch from "./pages/NoMatch";
+import NoMatch from "./pages/NoMatch";
 import AUTH from './utils/AUTH';
+import Amphora from './components/Amphora';
 
 
 class App extends React.Component {
@@ -87,30 +87,32 @@ class App extends React.Component {
 		return null;
 	}
 
+	loginGuest = () => {
+		this.setState({
+			loggedIn: true,
+			user: {
+				Name: "Guest",
+				Email: "Guest"
+			}
+		});
+	}
+
 	render() {
 
 		return (
 			<div className="App">
 				{/* Logged in users receive: */}
-				{this.state.loggedIn && (
-					<div>
-						{/* <Nav user={this.state.user} logout={this.logout} /> */}
-						<div className="main-view">
-							<Switch>
-								{/* <Route exact path="/" component={() => <Books user={this.state.user} />} /> */}
-								{/* <Route exact path="/books" component={() => <Books user={this.state.user} />} /> */}
-								{/* <Route exact path="/books/:id" component={Detail} /> */}
-								{/* <Route component={NoMatch} /> */}
-							</Switch>
-						</div>
+				{!this.state.loggedIn && (
+					<div className="main-view">
+						<Switch>
+							<Route exact path="/" component={() => <Amphora />} />
+							<Route component={NoMatch} />
+						</Switch>
 					</div>
 				)}
-				{/* Non-authed users receive login / sign up pages */}
-				{!this.state.loggedIn && (
-					<div className="auth-wrapper" >
-						<Route exact path="/" component={() => <LoginForm login={this.login} validateLength={this.validateLength} validateEmail={this.validateEmail} />} />
-						<Route exact path="/signup" component={() => <SignupForm validateLength={this.validateLength} validateEmail={this.validateEmail} />} />
-					</div>
+				{/* Non-authed users receive login page */}
+				{this.state.loggedIn && (
+					<Route exact path="/" component={() => <LoginForm login={this.login} loginGuest={this.loginGuest} validateLength={this.validateLength} validateEmail={this.validateEmail} />} />
 				)}
 			</div>
 		);

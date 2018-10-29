@@ -4,7 +4,6 @@ import Form from 'react-bootstrap/lib/Form';
 import FormGroup from 'react-bootstrap/lib/FormGroup';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import Button from 'react-bootstrap/lib/Button';
-import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 
 import SimpleHeader from '../../components/SimpleHeader';
 
@@ -40,6 +39,7 @@ class LoginForm extends React.Component {
 	}
 
 	render() {
+		const p = this.props;
 		if (this.state.redirectTo) {
 			return <Redirect to={{ pathname: this.state.redirectTo }} />
 		} else {
@@ -78,10 +78,12 @@ class LoginForm extends React.Component {
 							<FormControl.Feedback />
 						</FormGroup>
 						<div className="row">
-							<Link
-								to="/signup"
+							<a
+								target="_blank"
+								rel="noopener noreferrer"
+								href="https://www.pandora.com/account/register"
 								className="white-text col-md-8 pull-left"
-							>Create Pandora account</Link>
+							>Create Pandora account</a>
 							<Button
 								type="submit"
 								onClick={this.handleSubmit}
@@ -91,6 +93,11 @@ class LoginForm extends React.Component {
 								Log in
 						</Button>
 						</div>
+						<Link
+							to="/"
+							onClick={this.props.loginGuest}
+							className="white-text"
+						>Guest</Link>
 					</Form>
 				</>
 			)

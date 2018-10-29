@@ -1,0 +1,44 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 -1px 30px #000080;
+    padding: 3px;
+    height: 40px;
+}
+
+.hCenter {
+    margin: 8px auto;
+    width: 93px;
+    height: 100%;
+}
+
+.controlBox {
+    display: inline;
+    padding: 6px 7px;
+}
+
+.controlBox:hover {
+    cursor: pointer;
+    background-color: grey;
+}
+
+.controlBox:last-child {
+    border: 2px solid grey;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.controlBox:nth-child(2) {
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;
+}
+
+.controlBox:first-child {
+    border: 2px solid grey;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
