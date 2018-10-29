@@ -18,7 +18,10 @@ class Header extends React.Component {
                     name: "Metallica"
                 },
                 {
-                    name: "Chips"
+                    name: "Havok"
+                },
+                {
+                    name: "Lamb of God"
                 }
             ]
         };
@@ -30,7 +33,7 @@ class Header extends React.Component {
             <Navbar fixedTop className="main-navbar">
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <a href="/"><img src="images/logo.png" alt="Amphora logo" className="logo pull-left" /></a>
+                        <img src="images/logo.png" alt="Amphora logo" className="logo pull-left" />
                     </Navbar.Brand>
                     <h1 className="pull-left white-text margin-left-10">Amphora</h1>
                 </Navbar.Header>
