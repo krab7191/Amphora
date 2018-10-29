@@ -106,7 +106,7 @@ class App extends React.Component {
 					<div className="main-view">
 						<Switch>
 							<Route exact path="/" component={() => <Amphora />} />
-							<Route component={() => <NoMatch />} />
+							<Route component={() => <Amphora />} />
 						</Switch>
 					</div>
 				)}
