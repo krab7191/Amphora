@@ -1,0 +1,29 @@
+body {
+    min-width: 270px;
+}
+
+.logo {
+    height: 100px;
+    width: auto;
+    border-radius: 40%;
+    box-shadow: 0 1px 5px;
+    padding: 3px;
+}
+
+@media only screen and (max-width: 270px) {
+    .logo {
+        height: 65px;
+    }
+}
+
+@media only screen and (min-width: 270px) and (max-width: 400px) {
+    .logo {
+        height: 85px;
+    }
+}
+
+.inline-h1 {
+    display: inline;
+    padding-left: 10px;
+    color: white;
+}

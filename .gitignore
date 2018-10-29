@@ -7,7 +7,7 @@
 /coverage
 
 # production
-/build
+/client/build
 
 # Client modules
 /client/node_modules
