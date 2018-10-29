@@ -40,7 +40,7 @@ class App extends React.Component {
 
 	componentDidMount() {
 		AUTH.getUser().then(response => {
-			// console.log(response.data);
+			console.log(response);
 			// !! coerce falsy object value to actual boolean
 			if (!!response.data.user) {
 				this.setState({
