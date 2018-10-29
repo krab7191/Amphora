@@ -27,6 +27,20 @@
     background-color: #0F87F5;
 }
 
+/* FUCK trying to style BS react components. CHROME -> copy selector FTW */
+
 #station-dropdown, .navbar-default .navbar-toggle .icon-bar, .navbar-collapse.collapse.in>ul>li.dropdown.open>ul>li>a {
     color: white;
+}
+
+#root>div>div>div>nav>div>div.navbar-header>button>span {
+    background-color: white;
+}
+
+#root>div>div>div>nav>div>div.navbar-header>button:hover, #root>div>div>div>nav>div>div.navbar-header>button:focus {
+    background-color: #00AED6;
+}
+
+#root>div>div>div>nav>div>div.navbar-collapse.collapse.in>ul>li.dropdown.open>ul>li>a {
+    color: navy;
 }
