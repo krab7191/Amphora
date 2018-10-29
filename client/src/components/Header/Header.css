@@ -1,0 +1,32 @@
+.logo {
+    height: 65px;
+    width: auto;
+}
+
+.white-text {
+    color: white;
+}
+
+.main-navbar {
+    background-color: #0F87F5;
+}
+
+.margin-left-10 {
+    margin-left: 10px;
+}
+
+.padding-left-10 {
+    padding-left: 10px;
+}
+
+.inline {
+    display: inline;
+}
+
+#station-dropdown {
+    color: white;
+}
+
+#station-dropdown:focus {
+    background-color: #0F87F5;
+}

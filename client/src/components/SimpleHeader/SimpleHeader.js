@@ -10,7 +10,7 @@ const SimpleHeader = () => {
                     src="images/logo.png"
                     className="logo"
                 />
-                <h1>Amphora</h1>
+                <h1 className="inline-h1">Amphora</h1>
             </div>
         </header >
     )
