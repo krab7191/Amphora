@@ -12,13 +12,14 @@
 
 .hCenter {
     margin: 8px auto;
-    width: 150px;
+    width: 97px;
     height: 100%;
 }
 
 .controlBox {
     display: inline;
     padding: 6px 7px;
+    /* border: 2px solid gray; */
 }
 
 .controlBox:hover {
@@ -37,20 +38,19 @@
     border-bottom: 2px solid grey;
 }
 
-.controlBox:last-child {
-    border: 2px solid grey !important;
-    box-sizing: content-box;
+#volume-button {
+    border: 2px solid grey;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 
 #volume-slider {
-    padding: 10px 5px;
+    padding: 12px 7px;
     background-color: white;
     border-radius: 10px;
     position: absolute;
     height: 150px;
-    width: 30px;
+    width: 32px;
     bottom: 3px;
     margin-left: 60px;
     border: 2px solid #000080;
