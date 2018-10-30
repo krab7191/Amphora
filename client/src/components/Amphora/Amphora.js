@@ -12,7 +12,7 @@ const Amphora = props => {
         <div>
             <Header />
             <SongContainer songs={props.songs} />
-            <Footer />
+            <Footer songs={props.songs} />
         </div>
     )
 };

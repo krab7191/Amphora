@@ -12,7 +12,7 @@
 
 .hCenter {
     margin: 8px auto;
-    width: 93px;
+    width: 150px;
     height: 100%;
 }
 
@@ -26,10 +26,10 @@
     background-color: grey;
 }
 
-.controlBox:last-child {
+.controlBox:first-child {
     border: 2px solid grey;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .controlBox:nth-child(2) {
@@ -37,8 +37,30 @@
     border-bottom: 2px solid grey;
 }
 
-.controlBox:first-child {
-    border: 2px solid grey;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+.controlBox:last-child {
+    border: 2px solid grey !important;
+    box-sizing: content-box;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#volume-slider {
+    padding: 10px 5px;
+    background-color: white;
+    border-radius: 10px;
+    position: absolute;
+    height: 150px;
+    width: 30px;
+    bottom: 3px;
+    margin-left: 60px;
+    border: 2px solid #000080;
+    display: none;
+}
+
+#volume-button:hover~#volume-slider {
+    display: block;
+}
+
+#volume-slider:hover {
+    display: block;
 }

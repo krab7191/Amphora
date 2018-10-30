@@ -8,6 +8,6 @@
 }
 
 .song:hover {
-    background-color: lightgray;
+    background-color: darkgray;
     cursor: pointer;
 }
