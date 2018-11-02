@@ -16,7 +16,7 @@ class App extends React.Component {
 			user: null,
 			songs: [
 				{
-					img: "/Amphora/images/Sabaton.jpg",
+					img: "/public/images/Sabaton.jpg",
 					title: "Evil Lies In Every Man",
 					artist: "Orden Ogan",
 					album: "Ravenhead",
