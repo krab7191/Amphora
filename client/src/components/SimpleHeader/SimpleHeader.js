@@ -7,7 +7,7 @@ const SimpleHeader = () => {
             <div>
                 <img
                     alt="Amphora logo"
-                    src="https://amphora-web.herokuapp.com/images/logo.png"
+                    src="/Amphora/images/logo.png"
                     className="logo"
                 />
                 <h1 className="inline-h1">Amphora</h1>

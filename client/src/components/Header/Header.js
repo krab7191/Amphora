@@ -41,7 +41,7 @@ class Header extends React.Component {
             <Navbar fixedTop collapseOnSelect className="main-navbar">
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <img src="https://amphora-web.herokuapp.com/images/logo.png" alt="Amphora logo" className="logo pull-left" />
+                        <img src="/Amphora/images/logo.png" alt="Amphora logo" className="logo pull-left" />
                     </Navbar.Brand>
                     <Navbar.Toggle />
                     <h1 className="pull-left white-text margin-left-10">Amphora</h1>
