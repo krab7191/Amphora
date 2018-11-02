@@ -13,7 +13,7 @@ class Footer extends React.Component {
         this.state = {
             currSong: null,
             playing: 'pause',
-            volume: "volume-up"
+            volume: "volume-down"
         };
     };
 
@@ -37,6 +37,24 @@ class Footer extends React.Component {
         }
     }
 
+    volumeHandler = e => {
+        if (e === 0) {
+            this.setState({
+                volume: 'volume-off'
+            });
+        }
+        else if (e >= 75) {
+            this.setState({
+                volume: 'volume-up'
+            });
+        }
+        else {
+            this.setState({
+                volume: 'volume-down'
+            });
+        }
+    }
+
     render() {
         return (
             <div
@@ -53,7 +71,10 @@ class Footer extends React.Component {
                         <Glyphicon glyph={this.state.volume} />
                     </div>
                     <div id="volume-slider" >
-                        <TooltipSlider vertical={true} />
+                        <TooltipSlider
+                            onChange={this.volumeHandler}
+                            vertical={true}
+                        />
                     </div>
                 </div>
             </div>
