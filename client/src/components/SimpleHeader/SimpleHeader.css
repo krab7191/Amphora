@@ -9,11 +9,12 @@ header div {
     width: 260px;
 }
 
-#root>div>header>div>img.logo {
-    height: 5px !important;
+.logo {
+    height: 65px !important;
     width: auto;
     border-radius: 40%;
     box-shadow: 0 1px 5px;
     padding: 3px;
     content: url("../../images/logo.png");
+    max-width: 65px;
 }
