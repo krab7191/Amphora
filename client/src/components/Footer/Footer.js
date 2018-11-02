@@ -53,7 +53,7 @@ class Footer extends React.Component {
                         <Glyphicon glyph={this.state.volume} />
                     </div>
                     <div id="volume-slider" >
-                        <TooltipSlider vertical="true" />
+                        <TooltipSlider vertical={true} />
                     </div>
                 </div>
             </div>

@@ -4,6 +4,9 @@ import LoginForm from './pages/Auth/LoginForm';
 import NoMatch from "./pages/NoMatch";
 import AUTH from './utils/AUTH';
 import Amphora from './components/Amphora';
+import sabaton from './images/Sabaton.jpg';
+import gamma from './images/Gamma.jpg';
+import judas from './images/Judas.jpg';
 
 
 class App extends React.Component {
@@ -16,20 +19,20 @@ class App extends React.Component {
 			user: null,
 			songs: [
 				{
-					img: "images/Sabaton.jpg",
+					img: sabaton,
 					title: "Evil Lies In Every Man",
 					artist: "Orden Ogan",
 					album: "Ravenhead",
 					length: "5:45"
 				},
 				{
-					img: "images/Gamma.jpg",
+					img: gamma,
 					title: "Damn The Machine",
 					artist: "Gamma Ray",
 					album: "No World Order",
 				},
 				{
-					img: "images/Judas.jpg",
+					img: judas,
 					title: "One Shot At Glory",
 					artist: "Judas Priest",
 					album: "Painkiller",

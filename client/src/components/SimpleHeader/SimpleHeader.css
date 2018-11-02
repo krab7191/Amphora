@@ -8,3 +8,12 @@ header div {
     margin: 0 auto;
     width: 260px;
 }
+
+#root>div>header>div>img.logo {
+    height: 5px !important;
+    width: auto;
+    border-radius: 40%;
+    box-shadow: 0 1px 5px;
+    padding: 3px;
+    content: url("../../images/logo.png");
+}

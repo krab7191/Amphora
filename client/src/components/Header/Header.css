@@ -1,7 +1,3 @@
-.logo {
-    height: 65px;
-    width: auto;
-}
 
 .white-text {
     color: white;
@@ -27,8 +23,6 @@
     background-color: #0F87F5;
     color: white;
 }
-
-/* FUCK trying to style BS react components. CHROME -> copy selector FTW */
 
 .navbar-default .navbar-toggle .icon-bar, .navbar-collapse.collapse.in>ul>li.dropdown.open>ul>li>a {
     color: white;
