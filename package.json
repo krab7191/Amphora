@@ -33,6 +33,7 @@
     "if-env": "^1.0.4",
     "mime": "^2.3.1",
     "morgan": "^1.9.1",
-    "passport": "^0.4.0"
+    "passport": "^0.4.0",
+    "airbrake-js": "^1.4.6"
   }
 }
