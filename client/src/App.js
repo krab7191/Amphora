@@ -16,20 +16,20 @@ class App extends React.Component {
 			user: null,
 			songs: [
 				{
-					img: "images/Sabaton.jpg",
+					img: "/images/Sabaton.jpg",
 					title: "Evil Lies In Every Man",
 					artist: "Orden Ogan",
 					album: "Ravenhead",
 					length: "5:45"
 				},
 				{
-					img: "images/Gamma.jpg",
+					img: "/images/Gamma.jpg",
 					title: "Damn The Machine",
 					artist: "Gamma Ray",
 					album: "No World Order",
 				},
 				{
-					img: "images/Judas.jpg",
+					img: "/images/Judas.jpg",
 					title: "One Shot At Glory",
 					artist: "Judas Priest",
 					album: "Painkiller",
@@ -40,7 +40,7 @@ class App extends React.Component {
 
 	componentDidMount() {
 		AUTH.getUser().then(response => {
-			console.log(response);
+			// console.log(response);
 			// !! coerce falsy object value to actual boolean
 			if (!!response.data.user) {
 				this.setState({
