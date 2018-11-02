@@ -7,7 +7,7 @@ const Row = props => {
     return (
         <div className={`row song ${props.class}`} >
             <div className="col-md-2">
-                <img src={window.location.origin + props.img} alt={props.title} className="album-art" />
+                <img src={props.img} alt={props.title} className="album-art" />
             </div>
             <div className="col-md-4 container">
                 <p className="row"><strong>{props.title}</strong></p>

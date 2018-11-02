@@ -16,20 +16,20 @@ class App extends React.Component {
 			user: null,
 			songs: [
 				{
-					img: "/public/images/Sabaton.jpg",
+					img: "../public/images/Sabaton.jpg",
 					title: "Evil Lies In Every Man",
 					artist: "Orden Ogan",
 					album: "Ravenhead",
 					length: "5:45"
 				},
 				{
-					img: "/Amphora/images/Gamma.jpg",
+					img: "../public/images/Gamma.jpg",
 					title: "Damn The Machine",
 					artist: "Gamma Ray",
 					album: "No World Order",
 				},
 				{
-					img: "/Amphora/images/Judas.jpg",
+					img: "../public/images/Judas.jpg",
 					title: "One Shot At Glory",
 					artist: "Judas Priest",
 					album: "Painkiller",
