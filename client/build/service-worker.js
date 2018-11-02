@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Amphora/precache-manifest.ea095c3911f2b0a48fd93ba778d25292.js"
+  "/Amphora/precache-manifest.c17e7bd17cfa8a5e85edb1afed9f85fa.js"
 );
 
 workbox.clientsClaim();

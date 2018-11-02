@@ -6,8 +6,8 @@
 # testing
 /coverage
 
-# production
-/client/build
+# production (remove to deploy on Heroku)
+/client/build/node_modules
 
 # Client modules
 /client/node_modules

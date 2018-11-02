@@ -97,7 +97,7 @@ class LoginForm extends React.Component {
 							to="/"
 							onClick={this.props.loginGuest}
 							className="white-text"
-						>Guest</Link>
+						>Test (proposed layout)</Link>
 					</Form>
 				</>
 			)

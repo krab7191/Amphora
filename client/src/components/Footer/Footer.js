@@ -12,7 +12,8 @@ class Footer extends React.Component {
         super(props);
         this.state = {
             currSong: null,
-            playing: 'pause'
+            playing: 'pause',
+            volume: "volume-up"
         };
     };
 
@@ -49,7 +50,7 @@ class Footer extends React.Component {
                         <Glyphicon glyph="fast-forward" />
                     </div>
                     <div className="controlBox" id="volume-button">
-                        <Glyphicon glyph="volume-up" />
+                        <Glyphicon glyph={this.state.volume} />
                     </div>
                     <div id="volume-slider" >
                         <TooltipSlider vertical="true" />

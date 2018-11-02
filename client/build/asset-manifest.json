@@ -1,13 +1,15 @@
 {
-  "main.css": "/Amphora/static/css/main.668315c2.chunk.css",
-  "main.js": "/Amphora/static/js/main.7eaf4c7a.chunk.js",
-  "main.js.map": "/Amphora/static/js/main.7eaf4c7a.chunk.js.map",
-  "static/js/1.b8f03d21.chunk.js": "/Amphora/static/js/1.b8f03d21.chunk.js",
-  "static/js/1.b8f03d21.chunk.js.map": "/Amphora/static/js/1.b8f03d21.chunk.js.map",
+  "main.css": "/Amphora/static/css/main.4976a108.chunk.css",
+  "main.js": "/Amphora/static/js/main.23b88a88.chunk.js",
+  "main.js.map": "/Amphora/static/js/main.23b88a88.chunk.js.map",
+  "static/css/1.3ae7632d.chunk.css": "/Amphora/static/css/1.3ae7632d.chunk.css",
+  "static/js/1.6d528676.chunk.js": "/Amphora/static/js/1.6d528676.chunk.js",
+  "static/js/1.6d528676.chunk.js.map": "/Amphora/static/js/1.6d528676.chunk.js.map",
   "runtime~main.js": "/Amphora/static/js/runtime~main.6efe642c.js",
   "runtime~main.js.map": "/Amphora/static/js/runtime~main.6efe642c.js.map",
-  "static/css/main.668315c2.chunk.css.map": "/Amphora/static/css/main.668315c2.chunk.css.map",
+  "static/css/1.3ae7632d.chunk.css.map": "/Amphora/static/css/1.3ae7632d.chunk.css.map",
+  "static/css/main.4976a108.chunk.css.map": "/Amphora/static/css/main.4976a108.chunk.css.map",
   "index.html": "/Amphora/index.html",
-  "precache-manifest.ea095c3911f2b0a48fd93ba778d25292.js": "/Amphora/precache-manifest.ea095c3911f2b0a48fd93ba778d25292.js",
+  "precache-manifest.c17e7bd17cfa8a5e85edb1afed9f85fa.js": "/Amphora/precache-manifest.c17e7bd17cfa8a5e85edb1afed9f85fa.js",
   "service-worker.js": "/Amphora/service-worker.js"
 }
