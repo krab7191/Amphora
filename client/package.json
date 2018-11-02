@@ -6,6 +6,7 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "axios": "^0.18.0",
+    "eslint": "^5.8.0",
     "rc-slider": "^8.6.3",
     "react": "^16.0.0",
     "react-bootstrap": "^0.32.4",
