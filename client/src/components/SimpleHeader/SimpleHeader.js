@@ -7,7 +7,7 @@ const SimpleHeader = () => {
             <div>
                 <img
                     alt="Amphora logo"
-                    src={'../public/images/logo.png'}
+                    src={'%PUBLIC_URL%/images/logo.png'}
                     className="logo"
                 />
                 <h1 className="inline-h1">Amphora</h1>
