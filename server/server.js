@@ -12,13 +12,6 @@ const routes = require("./routes");
 const passport = require('./passport');
 const app = express();
 const PORT = process.env.PORT || 3001;
-const AirbrakeClient = require("airbrake-js");
-
-// Debug with airbrake
-var airbrake = new AirbrakeClient({
-	projectId: 201141,
-	projectKey: '1199b5afade6c9396daa59eda8b4a550'
-});
 
 // Middlewares
 app.use(morgan('dev'));
