@@ -7,10 +7,10 @@ const userController = require('../../controllers/userController');
 router.get('/user', userController.getUser);
 
 // passport login
-// router.post('/login', userController.auth, passport.authenticate('custom'), userController.authenticate);
+router.post('/login', userController.auth, passport.authenticate('custom'), userController.authenticate);
 
 // Login route using pandoraJS
-router.post('/login', userController.pandoraAuth);
+// router.post('/login', userController.pandoraAuth);
 
 // router.post('/logout', userController.logout);
 
