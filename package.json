@@ -21,7 +21,9 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^3.5.0",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "jsdoc": "^3.5.5",
+    "minami": "^1.2.3"
   },
   "dependencies": {
     "airbrake-js": "^1.4.6",
@@ -36,6 +38,8 @@
     "mime": "^2.3.1",
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
-    "passport-custom": "^1.0.5"
+    "passport-custom": "^1.0.5",
+    "blowfish": "^1.0.1",
+    "snekfetch": "^3.6.4"
   }
 }
