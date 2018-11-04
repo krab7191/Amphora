@@ -5,29 +5,24 @@ const axios = require('axios');
 const CustomStrategy = require("passport-custom").Strategy;
 
 let csrfToken;
+let csrftokenCookie;
 
 const pandoraStrategy = new CustomStrategy((req, done) => {
 
-    makeHeadRequest();
-
-    // axios.get("").then(resp => {
-    //     console.log(resp);
-    //     // done(err, user);
-    // }).catch((err) => {
-    //     console.log(err);
-    // });
+    makeHeadRequest(req, done);
 })
 
 // Make a HEAD request to the root domain to save the CSRF token cookie
-makeHeadRequest = callback => {
+makeHeadRequest = (req, done, callback) => {
     axios.head("https://pandora.com").then(resp => {
+        csrftokenCookie = resp.headers['set-cookie'];
         csrfToken = parseCookie(resp.headers['set-cookie']);
     }).catch(err => {
-
+        log(err);
     });
 }
 
-logger = stuff => {
+log = stuff => {
     console.log(stuff);
 }
 

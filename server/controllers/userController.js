@@ -26,6 +26,7 @@ module.exports = {
     },
     authenticate: (req, res) => {
         console.log('Authenticate method hit');
+        console.log(`authenticate: ${req}`);
         const {user} = req;
         const cleanUser = Object.assign({}, user);
         if (cleanUser) {
