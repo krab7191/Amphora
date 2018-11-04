@@ -6,10 +6,10 @@ const Row = props => {
 
     return (
         <div className={`row song ${props.class}`} >
-            <div className="col-md-2">
+            <div className="col-xs-2">
                 <img src={props.img} alt={props.title} className="album-art" />
             </div>
-            <div className="col-md-4 container">
+            <div className="col-xs-6 container">
                 <p className="row"><strong>{props.title}</strong></p>
                 <p className="row">by <strong>{props.artist}</strong></p>
                 <p className="row">from <em>{props.album}</em></p>

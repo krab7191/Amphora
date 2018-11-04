@@ -11,3 +11,24 @@
     background-color: darkgray;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 840px) {
+    .col-xs-6 {
+        margin-left: 50px;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .col-xs-6 {
+        margin-left: 100px;
+    }
+}
+
+@media only screen and (max-width: 308px) {
+    .col-xs-6 {
+        margin-left: 55px;
+    }
+    .album-art {
+        height: 80px;
+    }
+}
