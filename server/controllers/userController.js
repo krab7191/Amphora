@@ -1,11 +1,21 @@
 
+// Need inspector for circular Object
+const util = require('util');
+
 // pandoraJS
 const { Client } = require('../pandoraJS/Pandora.js');
 const pandoraClient = new Client();
 console.log(pandoraClient);
+
 pandoraClient.on('ready', () => {
     console.log("Pandora client ready");
 });
+// Connect to force client to ready
+// pandoraClient.login("user", "pass").then(resp => {
+//     console.log(`Getting client ready: ${resp}`);
+// }).catch(err => {
+//     console.log(`Getting client ready: ${err}`);
+// });
 
 // Defining methods for the userController
 module.exports = {
@@ -29,15 +39,18 @@ module.exports = {
     },
     auth: function (req, res, next) {
         console.log(req.body);
-        console.log('Auth function hit, next');
+        console.log('Auth function hit, next()');
         next();
     },
     // controller for pandoraJS
     pandoraAuth: function (req, res) {
-        console.log("pandora auth controller");
         const { username, password } = req.body;
         console.log(username, password);
-        pandoraClient.login(username, password).then(console.log(pandoraClient));
+        pandoraClient.login(username, password).then(() => {
+            res.json({ user: parseUserCredentials(pandoraClient.user) });
+        }).catch(err => {
+            console.log(`pandoraJS error: ${err}`);
+        });
     },
     authenticate: (req, res) => {
         console.log('Authenticate method hit');
@@ -49,7 +62,18 @@ module.exports = {
             delete cleanUser.password;
         }
         res.json({ user: cleanUser });
-    },
-    pandoraClient: pandoraClient,
-
+    }
 };
+
+parseUserCredentials = obj => {
+    const { username, email, token, kruxToken, listenerToken } = obj.client.user;
+    const user = {
+        username: username,
+        email: email,
+        token: token,
+        kruxToken: kruxToken,
+        listenerToken: listenerToken
+    };
+    console.log(user);
+    return user;
+}

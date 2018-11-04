@@ -42,21 +42,23 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		AUTH.getUser().then(response => {
-			console.log(`User object: ${response.data.user}`);
-			// !! coerce falsy object value to actual boolean
-			if (!!response.data.user) {
-				this.setState({
-					loggedIn: true,
-					user: response.data.user
-				});
-			} else {
-				this.setState({
-					loggedIn: false,
-					user: null
-				});
-			}
-		});
+		console.log(`Component DID mount. User: ${this.state.user}`);
+		// AUTH.getUser().then(response => {
+		// 	console.log(`User object: ${response.data.user}`);
+		// 	// !! coerce falsy object value to actual boolean
+		// 	if (!!response.data.user) {
+		// 		this.setState({
+		// 			loggedIn: true,
+		// 			user: response.data.user
+		// 		});
+		// 	} else {
+		// 		this.setState({
+		// 			loggedIn: false,
+		// 			user: null
+		// 		});
+		// 	}
+		// });
+
 	}
 
 	logout = (event) => {
@@ -86,17 +88,26 @@ class App extends React.Component {
 
 	login = (username, password) => {
 		AUTH.login(username, password).then(response => {
-			console.log("Login firing...");
 			console.log(response);
-			if (response.status === 200) {
+			if (response.status === 200 && response.data.user) {
+				console.log(response.data.user);
 				// update the state
 				this.setState({
 					loggedIn: true,
 					user: response.data.user
 				});
 			}
+			else {
+				console.log(`Authentication failed: ${response.data}`);
+				this.triggerModal("Incorrect username or password");
+			}
 		});
 	}
+
+	triggerModal = text => {
+		alert(text);
+	}
+
 	loginGuest = () => {
 		this.setState({
 			loggedIn: true,
