@@ -13,7 +13,8 @@ class Footer extends React.Component {
         this.state = {
             currSong: null,
             playing: 'pause',
-            volume: "volume-down"
+            volumeIcon: "volume-down",
+            volume: 50
         };
     };
 
@@ -40,17 +41,17 @@ class Footer extends React.Component {
     volumeHandler = e => {
         if (e === 0) {
             this.setState({
-                volume: 'volume-off'
+                volumeIcon: 'volume-off'
             });
         }
-        else if (e >= 75) {
+        else if (e >= 60) {
             this.setState({
-                volume: 'volume-up'
+                volumeIcon: 'volume-up'
             });
         }
         else {
             this.setState({
-                volume: 'volume-down'
+                volumeIcon: 'volume-down'
             });
         }
     }
@@ -68,10 +69,11 @@ class Footer extends React.Component {
                         <Glyphicon glyph="fast-forward" />
                     </div>
                     <div className="controlBox" id="volume-button">
-                        <Glyphicon glyph={this.state.volume} />
+                        <Glyphicon glyph={this.state.volumeIcon} />
                     </div>
                     <div id="volume-slider" >
                         <TooltipSlider
+                            defaultValue={this.state.volume}
                             onChange={this.volumeHandler}
                             vertical={true}
                         />

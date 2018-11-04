@@ -1,4 +1,5 @@
 const passport = require('passport');
+const PandoraStrategy = require('./pandoraStrategy');
 
 passport.serializeUser((user, done) => {
 	console.log('Serialize called');
@@ -9,19 +10,19 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
 	console.log('Deserialize called');
-	db.User.findOne(
-		{ _id: id },
-		'firstName lastName username',
-		(err, user) => {
-			console.log('Deserialize user called');
-			console.log(user);
-			console.log('--------------');
-			done(null, user);
-		}
-	);
+	// db.User.findOne(
+	// 	{ _id: id },
+	// 	'firstName lastName username',
+	// 	(err, user) => {
+	// 		console.log('Deserialize user called');
+	// 		console.log(user);
+	// 		console.log('--------------');
+	// 		done(null, user);
+	// 	}
+	// );
 });
 
 // Register Strategies
-// passport.use(LocalStrategy);
+passport.use(PandoraStrategy);
 
 module.exports = passport;

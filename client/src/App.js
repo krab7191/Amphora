@@ -43,7 +43,7 @@ class App extends React.Component {
 
 	componentDidMount() {
 		AUTH.getUser().then(response => {
-			// console.log(response);
+			console.log(`User object: ${response.data.user}`);
 			// !! coerce falsy object value to actual boolean
 			if (!!response.data.user) {
 				this.setState({
@@ -86,6 +86,7 @@ class App extends React.Component {
 
 	login = (username, password) => {
 		AUTH.login(username, password).then(response => {
+			console.log("Login firing...");
 			console.log(response);
 			if (response.status === 200) {
 				// update the state
