@@ -7,7 +7,7 @@ const { Client } = require('../pandoraJS/Pandora.js');
 const pandoraClient = new Client();
 
 pandoraClient.on('ready', () => {
-    console.log("Pandora client ready");
+    // console.log("Pandora client ready");
 });
 // Connect to force client to ready
 // pandoraClient.login("user", "pass").then(resp => {
@@ -44,7 +44,7 @@ module.exports = {
     // controller for pandoraJS
     pandoraAuth: function (req, res) {
         const { username, password } = req.body;
-        console.log(username, password);
+        // console.log(username, password);
 
         pandoraClient.login(username, password).then(() => {
             res.json({ user: parseUserCredentials(pandoraClient.user) });
@@ -76,6 +76,6 @@ parseUserCredentials = obj => {
         kruxToken: kruxToken,
         listenerToken: listenerToken
     };
-    console.log(user);
+    // console.log(user);
     return user;
 }

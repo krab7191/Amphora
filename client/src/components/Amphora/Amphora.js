@@ -13,8 +13,15 @@ class Amphora extends React.Component {
         this.state = {
             user: this.props.user,
             stations: [],
-            currStation: "Getting stations..."
+            currStation: "Getting stations...",
+            songs: []
         };
+    }
+
+    componentDidUpdate() {
+        if (this.state.songs.length === 0 && this.state.stations.length !== 0) {
+            this.getSongs(this.state.currStation);
+        }
     }
 
     // componentDidMount() {
@@ -41,8 +48,26 @@ class Amphora extends React.Component {
         });
     }
 
+    getSongs = name => {
+        console.log(`Getting songs for ${name}`);
+        API.getSongs(name).then(resp => {
+            console.log(resp);
+            // resp.data.songs.forEach(song => {
+            //     this.setState({
+            //         songs: [...this.state.songs, song]
+            //     })
+            // })
+            this.setState({
+                songs: [...this.state.songs.concat(resp.data.songs)]
+            })
+        }).catch(err => {
+            console.log(`Error getting songs: ${err}`);
+        });
+    }
+
     render() {
 
+        console.log(this.state.songs);
 
         return (
             <React.Fragment>
@@ -52,7 +77,9 @@ class Amphora extends React.Component {
                     stations={this.state.stations}
                     currStation={this.state.currStation}
                 />
-                <SongContainer songs={this.props.songs} />
+                <SongContainer
+                    songs={this.state.songs}
+                />
                 <Footer songs={this.props.songs} />
             </React.Fragment>
         );

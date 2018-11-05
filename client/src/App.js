@@ -4,10 +4,6 @@ import LoginForm from './pages/Auth/LoginForm';
 import NoMatch from "./pages/NoMatch";
 import AUTH from './utils/AUTH';
 import Amphora from './components/Amphora';
-import sabaton from './images/Sabaton.jpg';
-import gamma from './images/Gamma.jpg';
-import judas from './images/Judas.jpg';
-
 
 class App extends React.Component {
 
@@ -16,28 +12,7 @@ class App extends React.Component {
 
 		this.state = {
 			loggedIn: false,
-			user: null,
-			songs: [
-				{
-					img: sabaton,
-					title: "Evil Lies In Every Man",
-					artist: "Orden Ogan",
-					album: "Ravenhead",
-					length: "5:45"
-				},
-				{
-					img: gamma,
-					title: "Damn The Machine",
-					artist: "Gamma Ray",
-					album: "No World Order",
-				},
-				{
-					img: judas,
-					title: "One Shot At Glory",
-					artist: "Judas Priest",
-					album: "Painkiller",
-				}
-			]
+			user: null
 		};
 	}
 
@@ -147,7 +122,7 @@ class App extends React.Component {
 				{this.state.loggedIn && (
 					<div className="main-view">
 						<Switch>
-							<Route exact path="/" component={() => <Amphora songs={this.state.songs} user={this.state.user} />} />
+							<Route exact path="/" component={() => <Amphora user={this.state.user} />} />
 							<Route component={NoMatch} />
 						</Switch>
 					</div>
