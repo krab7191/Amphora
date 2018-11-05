@@ -3,7 +3,7 @@
 const util = require('util');
 
 // pandoraJS
-const { Client } = require('../pandoraJS/Pandora.js');
+const { Client } = require('../pandoraJS/Pandora.js/src');
 const pandoraClient = new Client();
 
 pandoraClient.on('ready', () => {
