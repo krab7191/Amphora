@@ -88,9 +88,8 @@ class App extends React.Component {
 
 	login = (username, password) => {
 		AUTH.login(username, password).then(response => {
-			console.log(response);
 			if (response.status === 200 && response.data.user) {
-				console.log(response.data.user);
+				// console.log(response.data.user);
 				// update the state
 				this.setState({
 					loggedIn: true,
@@ -98,7 +97,7 @@ class App extends React.Component {
 				});
 			}
 			else {
-				console.log(`Authentication failed: ${response.data}`);
+				console.log(`Authentication failed: ${response.data.message}`);
 				this.triggerModal("Incorrect username or password");
 			}
 		});
@@ -148,7 +147,7 @@ class App extends React.Component {
 				{this.state.loggedIn && (
 					<div className="main-view">
 						<Switch>
-							<Route exact path="/" component={() => <Amphora songs={this.state.songs} />} />
+							<Route exact path="/" component={() => <Amphora songs={this.state.songs} user={this.state.user} />} />
 							<Route component={NoMatch} />
 						</Switch>
 					</div>

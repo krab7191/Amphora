@@ -5,7 +5,6 @@ const util = require('util');
 // pandoraJS
 const { Client } = require('../pandoraJS/Pandora.js');
 const pandoraClient = new Client();
-console.log(pandoraClient);
 
 pandoraClient.on('ready', () => {
     console.log("Pandora client ready");
@@ -46,10 +45,12 @@ module.exports = {
     pandoraAuth: function (req, res) {
         const { username, password } = req.body;
         console.log(username, password);
+
         pandoraClient.login(username, password).then(() => {
             res.json({ user: parseUserCredentials(pandoraClient.user) });
         }).catch(err => {
             console.log(`pandoraJS error: ${err}`);
+            res.json({ message: "Authentication failed" });
         });
     },
     authenticate: (req, res) => {
@@ -62,7 +63,8 @@ module.exports = {
             delete cleanUser.password;
         }
         res.json({ user: cleanUser });
-    }
+    },
+    pandoraClient: pandoraClient
 };
 
 parseUserCredentials = obj => {
