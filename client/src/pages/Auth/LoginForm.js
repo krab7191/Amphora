@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Form from 'react-bootstrap/lib/Form';
 import FormGroup from 'react-bootstrap/lib/FormGroup';
 import FormControl from 'react-bootstrap/lib/FormControl';
@@ -93,11 +93,11 @@ class LoginForm extends React.Component {
 								Log in
 						</Button>
 						</div>
-						<Link
+						{/* <Link
 							to="/"
 							onClick={this.props.loginGuest}
 							className="white-text"
-						>Test (proposed layout)</Link>
+						>Test (proposed layout)</Link> */}
 					</Form>
 				</>
 			)

@@ -16,26 +16,6 @@ class App extends React.Component {
 		};
 	}
 
-	componentDidMount() {
-		console.log(`Component DID mount. User: ${this.state.user}`);
-		// AUTH.getUser().then(response => {
-		// 	console.log(`User object: ${response.data.user}`);
-		// 	// !! coerce falsy object value to actual boolean
-		// 	if (!!response.data.user) {
-		// 		this.setState({
-		// 			loggedIn: true,
-		// 			user: response.data.user
-		// 		});
-		// 	} else {
-		// 		this.setState({
-		// 			loggedIn: false,
-		// 			user: null
-		// 		});
-		// 	}
-		// });
-
-	}
-
 	logout = (event) => {
 		event.preventDefault();
 		if (this.state.user.Email === "Guest") {

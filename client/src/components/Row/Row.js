@@ -2,8 +2,6 @@ import React from 'react';
 import './Row.css';
 
 const Row = props => {
-    console.log(`Props in 'Row': `, props);
-
 
     return (
         <div className={`row song ${props.class}`} >

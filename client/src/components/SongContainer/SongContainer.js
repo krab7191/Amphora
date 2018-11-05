@@ -14,11 +14,9 @@ class SongContainer extends React.Component {
 
     componentDidMount() {
         console.log("SongContainer mounted");
-        console.log(`Songs: ${this.props.songs}`);
     }
 
     render() {
-        console.log(this.props.songs);
 
         return (
             <div id="song-container" className="container" >

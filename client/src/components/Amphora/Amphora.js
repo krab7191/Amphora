@@ -38,7 +38,6 @@ class Amphora extends React.Component {
     getStations = () => {
         console.log("Getting stations");
         API.getStations().then(resp => {
-            console.log(resp.data.stations);
             this.setState({
                 stations: resp.data.stations,
                 currStation: resp.data.stations[0]
@@ -51,23 +50,16 @@ class Amphora extends React.Component {
     getSongs = name => {
         console.log(`Getting songs for ${name}`);
         API.getSongs(name).then(resp => {
-            console.log(resp);
-            // resp.data.songs.forEach(song => {
-            //     this.setState({
-            //         songs: [...this.state.songs, song]
-            //     })
-            // })
             this.setState({
                 songs: [...this.state.songs.concat(resp.data.songs)]
             })
+            console.log("Songs received");
         }).catch(err => {
             console.log(`Error getting songs: ${err}`);
         });
     }
 
     render() {
-
-        console.log(this.state.songs);
 
         return (
             <React.Fragment>
