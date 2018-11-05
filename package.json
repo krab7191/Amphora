@@ -30,6 +30,7 @@
     "axios": "^0.18.0",
     "bcrypt": "^3.0.2",
     "bcryptjs": "^2.4.3",
+    "blowfish": "^1.0.1",
     "cookie": "^0.3.1",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
@@ -39,7 +40,6 @@
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
     "passport-custom": "^1.0.5",
-    "blowfish": "^1.0.1",
     "snekfetch": "^3.6.4"
   }
 }

@@ -19,9 +19,9 @@ class Footer extends React.Component {
     };
 
     componentDidMount() {
-        this.setState({
-            currSong: this.props.songs[0]
-        });
+        // this.setState({
+        //     currSong: this.props.songs[0]
+        // });
     };
 
     playPause = () => {

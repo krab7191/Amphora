@@ -4,10 +4,6 @@ import LoginForm from './pages/Auth/LoginForm';
 import NoMatch from "./pages/NoMatch";
 import AUTH from './utils/AUTH';
 import Amphora from './components/Amphora';
-import sabaton from './images/Sabaton.jpg';
-import gamma from './images/Gamma.jpg';
-import judas from './images/Judas.jpg';
-
 
 class App extends React.Component {
 
@@ -16,47 +12,8 @@ class App extends React.Component {
 
 		this.state = {
 			loggedIn: false,
-			user: null,
-			songs: [
-				{
-					img: sabaton,
-					title: "Evil Lies In Every Man",
-					artist: "Orden Ogan",
-					album: "Ravenhead",
-					length: "5:45"
-				},
-				{
-					img: gamma,
-					title: "Damn The Machine",
-					artist: "Gamma Ray",
-					album: "No World Order",
-				},
-				{
-					img: judas,
-					title: "One Shot At Glory",
-					artist: "Judas Priest",
-					album: "Painkiller",
-				}
-			]
+			user: null
 		};
-	}
-
-	componentDidMount() {
-		AUTH.getUser().then(response => {
-			console.log(`User object: ${response.data.user}`);
-			// !! coerce falsy object value to actual boolean
-			if (!!response.data.user) {
-				this.setState({
-					loggedIn: true,
-					user: response.data.user
-				});
-			} else {
-				this.setState({
-					loggedIn: false,
-					user: null
-				});
-			}
-		});
 	}
 
 	logout = (event) => {
@@ -86,17 +43,25 @@ class App extends React.Component {
 
 	login = (username, password) => {
 		AUTH.login(username, password).then(response => {
-			console.log("Login firing...");
-			console.log(response);
-			if (response.status === 200) {
+			if (response.status === 200 && response.data.user) {
+				// console.log(response.data.user);
 				// update the state
 				this.setState({
 					loggedIn: true,
 					user: response.data.user
 				});
 			}
+			else {
+				console.log(`Authentication failed: ${response.data.message}`);
+				this.triggerModal("Incorrect username or password");
+			}
 		});
 	}
+
+	triggerModal = text => {
+		alert(text);
+	}
+
 	loginGuest = () => {
 		this.setState({
 			loggedIn: true,
@@ -137,7 +102,7 @@ class App extends React.Component {
 				{this.state.loggedIn && (
 					<div className="main-view">
 						<Switch>
-							<Route exact path="/" component={() => <Amphora songs={this.state.songs} />} />
+							<Route exact path="/" component={() => <Amphora user={this.state.user} />} />
 							<Route component={NoMatch} />
 						</Switch>
 					</div>

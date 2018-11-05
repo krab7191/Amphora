@@ -9,30 +9,14 @@ import Glyphicon from 'react-bootstrap/lib/Glyphicon';
 import './Header.css';
 
 class Header extends React.Component {
-    constructor(props) {
-        super(props);
+    // constructor(props) {
+    //     super(props);
+    // }
 
-        this.state = {
-            stations: [
-                {
-                    name: "Metallica"
-                },
-                {
-                    name: "Havok"
-                },
-                {
-                    name: "Lamb of God"
-                }
-            ],
-            currStation: "Metallica"
-        };
-    }
-
-    changeStation = event => {
-        const { name } = event.target;
-        this.setState({
-            currStation: name
-        })
+    componentDidMount() {
+        if (this.props.stations.length === 0) {
+            this.props.getStations();
+        }
     }
 
     render() {
@@ -52,10 +36,10 @@ class Header extends React.Component {
                             <Glyphicon glyph="cog" className="white-text" />
                             <p className="inline padding-left-10 white-text">Settings</p>
                         </NavItem>
-                        <NavDropdown eventKey={1} title={this.state.currStation} id="station-dropdown">
+                        <NavDropdown eventKey={1} title={this.props.currStation} id="station-dropdown">
                             {
-                                this.state.stations.map((station, i) => (
-                                    <MenuItem eventKey={`1.${i}`} key={i} name={station.name} onClick={this.changeStation}>{station.name}</MenuItem>
+                                this.props.stations.map((station, i) => (
+                                    <MenuItem eventKey={`1.${i}`} key={i} name={station} onClick={this.props.changeStation}>{station}</MenuItem>
                                 ))
                             }
                         </NavDropdown>

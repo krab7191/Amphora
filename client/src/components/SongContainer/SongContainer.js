@@ -3,23 +3,35 @@ import Row from "../Row";
 
 import './SongContainer.css';
 
-const SongContainer = props => {
+class SongContainer extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentPlaying: ""
+        };
+    }
 
 
-    return (
-        <div id="song-container" className="container">
-            {
-                props.songs.map((song, i) => (
-                    i === 0 && <Row {...song} key={i} class="playing" />
-                ))
-            }
-            {
-                props.songs.map((song, i) => (
-                    i !== 0 && <Row {...song} key={i} />
-                ))
-            }
-        </div>
-    );
+    componentDidMount() {
+        console.log("SongContainer mounted");
+    }
+
+    render() {
+
+        return (
+            <div id="song-container" className="container" >
+                {
+                    this.props.songs.map((song, i) => (
+                        <Row
+                            {...song}
+                            key={i}
+                            className={song.name === this.state.currentPlaying ? "playing" : ''}
+                        />
+                    ))
+                }
+            </div >
+        );
+    }
 
 };
 
