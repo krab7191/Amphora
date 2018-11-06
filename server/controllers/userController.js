@@ -3,18 +3,13 @@
 const util = require('util');
 
 // pandoraJS
-const { Client } = require('../pandoraJS/Pandora.js/src');
+const { Client } = require('../pandora-js');
 const pandoraClient = new Client();
 
 pandoraClient.on('ready', () => {
     // console.log("Pandora client ready");
 });
-// Connect to force client to ready
-// pandoraClient.login("user", "pass").then(resp => {
-//     console.log(`Getting client ready: ${resp}`);
-// }).catch(err => {
-//     console.log(`Getting client ready: ${err}`);
-// });
+
 
 // Defining methods for the userController
 module.exports = {
