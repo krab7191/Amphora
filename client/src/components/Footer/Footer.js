@@ -79,6 +79,7 @@ class Footer extends React.Component {
                         />
                     </div>
                 </div>
+                <audio ref="audio-tag" src="" id="audio-tag" />
             </div>
         )
     }
