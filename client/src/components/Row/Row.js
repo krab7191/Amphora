@@ -6,8 +6,13 @@ class Row extends React.Component {
     formatSongLength = seconds => {
         const mins = Math.floor(seconds / 60);
         let secs = Math.floor(seconds % 60);
-        if (secs.length === 1) {
+        // If less than 10, prepend 0
+        if (secs[0] === 0) {
             secs = '0' + secs;
+        }
+        // If divisible by 10, append 0
+        else if (secs[1] === 0) {
+            secs = secs + '0';
         }
         return `${mins}:${secs}`;
     };
@@ -15,7 +20,7 @@ class Row extends React.Component {
     render() {
         return (
             <div className={`row song ${this.props.class}`} >
-                <div className="col-md-2">
+                <div className="col-xs-2">
                     <img src={this.props.art[2].url} alt={this.props.title} className="album-art" />
                 </div>
                 <div className="col-xs-6 container">
