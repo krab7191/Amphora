@@ -10,31 +10,11 @@ const TooltipSlider = createSliderWithTooltip(Slider);
 class Footer extends React.Component {
     constructor(props) {
         super(props);
-        this.audio = React.createRef();
         this.state = {
-            playing: 'pause',
             volumeIcon: "volume-down",
             volume: 50
         };
     };
-
-    playPause = () => {
-        const val = this.state.playing;
-        if (val === "pause") {
-            // Song is playing...
-            this.audio.current.pause();
-            this.setState({
-                playing: 'play'
-            });
-        }
-        else {
-            // Song is paused
-            this.audio.current.play();
-            this.setState({
-                playing: 'pause'
-            });
-        }
-    }
 
     volumeHandler = e => {
         if (e === 0) {
@@ -60,11 +40,11 @@ class Footer extends React.Component {
                 className="footer"
             >
                 <div className="hCenter">
-                    <div className="controlBox" onClick={this.playPause}>
-                        <Glyphicon glyph={this.state.playing} />
+                    <div className="controlBox" onClick={this.props.playPause}>
+                        <Glyphicon glyph={this.props.playing} />
                     </div>
                     <div className="controlBox">
-                        <Glyphicon glyph="fast-forward" onClick={this.props.songSkip} />
+                        <Glyphicon glyph="fast-forward" onClick={this.props.nextSong} />
                     </div>
                     <div className="controlBox" id="volume-button">
                         <Glyphicon glyph={this.state.volumeIcon} />
@@ -77,14 +57,6 @@ class Footer extends React.Component {
                         />
                     </div>
                 </div>
-                <audio
-                    onTimeUpdate={this.props.getSongTime}
-                    onEnded={this.props.nextSong}
-                    ref={this.audio}
-                    src={this.props.song ? this.props.song.audioURL : ""}
-                    id="audio-tag"
-                    autoPlay
-                />
             </div>
         )
     }
