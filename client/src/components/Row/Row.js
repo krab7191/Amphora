@@ -7,7 +7,7 @@ class Row extends React.Component {
         const mins = Math.floor(seconds / 60);
         let secs = Math.floor(seconds % 60);
         // If less than 10, prepend 0
-        if (secs.length === 1) {
+        if (secs[0] === 0) {
             secs = '0' + secs;
         }
         // If divisible by 10, append 0
