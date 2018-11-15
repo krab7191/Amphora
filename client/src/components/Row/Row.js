@@ -27,7 +27,9 @@ class Row extends React.Component {
                     <p className="row"><strong>{this.props.title}</strong></p>
                     <p className="row">by <strong>{this.props.artist}</strong></p>
                     <p className="row">from <em>{this.props.album}</em></p>
-                    <p className="row">0:00 / {this.formatSongLength(this.props.length)}</p>
+                    {
+                        this.props.isPlaying && <p className="row">0:00 / {this.formatSongLength(this.props.length)}</p>
+                    }
                 </div>
             </div >
         );

@@ -10,28 +10,26 @@ const TooltipSlider = createSliderWithTooltip(Slider);
 class Footer extends React.Component {
     constructor(props) {
         super(props);
+        this.audio = React.createRef();
         this.state = {
-            currSong: null,
             playing: 'pause',
             volumeIcon: "volume-down",
             volume: 50
         };
     };
 
-    componentDidMount() {
-        // this.setState({
-        //     currSong: this.props.songs[0]
-        // });
-    };
-
     playPause = () => {
         const val = this.state.playing;
         if (val === "pause") {
+            // Song is playing...
+            this.audio.current.pause();
             this.setState({
                 playing: 'play'
             });
         }
         else {
+            // Song is paused
+            this.audio.current.play();
             this.setState({
                 playing: 'pause'
             });
@@ -66,7 +64,7 @@ class Footer extends React.Component {
                         <Glyphicon glyph={this.state.playing} />
                     </div>
                     <div className="controlBox">
-                        <Glyphicon glyph="fast-forward" />
+                        <Glyphicon glyph="fast-forward" onClick={this.props.songSkip} />
                     </div>
                     <div className="controlBox" id="volume-button">
                         <Glyphicon glyph={this.state.volumeIcon} />
@@ -79,7 +77,7 @@ class Footer extends React.Component {
                         />
                     </div>
                 </div>
-                <audio ref="audio-tag" src="" id="audio-tag" />
+                <audio ref={this.audio} src={this.props.song ? this.props.song.audioURL : ""} id="audio-tag" autoPlay />
             </div>
         )
     }

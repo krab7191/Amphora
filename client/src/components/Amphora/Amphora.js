@@ -14,7 +14,8 @@ class Amphora extends React.Component {
             user: this.props.user,
             stations: [],
             currStation: "Getting stations...",
-            songs: []
+            songs: [],
+            currSong: null
         };
     }
 
@@ -52,11 +53,28 @@ class Amphora extends React.Component {
         API.getSongs(name).then(resp => {
             this.setState({
                 songs: [...this.state.songs.concat(resp.data.songs)]
-            })
+            }, () => {
+                // Set the very first song
+                if (this.state.currSong === null) {
+                    this.setState({
+                        currSong: this.state.songs[0]
+                    });
+                }
+            });
             console.log("Songs received");
         }).catch(err => {
             console.log(`Error getting songs: ${err}`);
         });
+    }
+
+    songSkip = () => {
+        console.log("Skipping to next song.");
+
+    }
+
+    // Use to decide when to get more songs.
+    isEndSongArray = () => {
+
     }
 
     render() {
@@ -72,7 +90,7 @@ class Amphora extends React.Component {
                 <SongContainer
                     songs={this.state.songs}
                 />
-                <Footer songs={this.props.songs} />
+                <Footer song={this.state.currSong} songSkip={this.songSkip} />
             </React.Fragment>
         );
     }
