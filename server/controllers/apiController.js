@@ -35,7 +35,7 @@ module.exports = {
             res.json({ songs: songDetails });
         }).catch((err) => {
             console.log(`Error getting songs: ${err}`);
-            res.json({ error: "Error gettings songs" })
+            res.json({ error: "Error gettings songs" });
         });
     }
 };

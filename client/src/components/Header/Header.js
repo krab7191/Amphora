@@ -39,7 +39,14 @@ class Header extends React.Component {
                         <NavDropdown eventKey={1} title={this.props.currStation} id="station-dropdown">
                             {
                                 this.props.stations.map((station, i) => (
-                                    <MenuItem eventKey={`1.${i}`} key={i} name={station} onClick={this.props.changeStation}>{station}</MenuItem>
+                                    <MenuItem
+                                        eventKey={`1.${i}`}
+                                        key={i}
+                                        name={station}
+                                        onClick={this.props.changeStation}
+                                    >
+                                        {station}
+                                    </MenuItem>
                                 ))
                             }
                         </NavDropdown>

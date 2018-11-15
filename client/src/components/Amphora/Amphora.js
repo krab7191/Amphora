@@ -31,9 +31,14 @@ class Amphora extends React.Component {
 
     changeStation = event => {
         const { name } = event.target;
+        this.playPause();
         this.setState({
-            currStation: name
-        })
+            currStation: name,
+            currSong: null,
+            songs: []
+        }, () => {
+            console.log("Station changed");
+        });
     }
 
     getStations = () => {
@@ -51,20 +56,26 @@ class Amphora extends React.Component {
     getSongs = name => {
         console.log(`Getting songs for ${name}`);
         API.getSongs(name).then(resp => {
-            this.setState({
-                songs: [...this.state.songs.concat(resp.data.songs)]
-            }, () => {
-                // Set the very first song
-                console.log(this.state.songs);
-                if (this.state.currSong === null) {
-                    this.setState({
-                        currSong: this.state.songs[0]
-                    });
-                }
-            });
-            console.log("Songs received");
+            if (resp.data.error) {
+                this.getSongs(this.state.currStation);
+            }
+            else {
+                this.setState({
+                    songs: [...this.state.songs.concat(resp.data.songs)]
+                }, () => {
+                    // Set the very first song
+                    console.log(this.state.songs);
+                    if (this.state.currSong === null) {
+                        this.setState({
+                            currSong: this.state.songs[0]
+                        });
+                    }
+                });
+                console.log("Songs received");
+            }
         }).catch(err => {
             console.log(`Error getting songs: ${err}`);
+            this.getSongs(this.state.currStation);
         });
     }
 
