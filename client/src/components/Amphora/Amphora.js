@@ -55,6 +55,7 @@ class Amphora extends React.Component {
                 songs: [...this.state.songs.concat(resp.data.songs)]
             }, () => {
                 // Set the very first song
+                console.log(this.state.songs);
                 if (this.state.currSong === null) {
                     this.setState({
                         currSong: this.state.songs[0]
@@ -77,15 +78,21 @@ class Amphora extends React.Component {
         this.setState({
             playing: 'pause'
         }, () => {
-            const i = this.state.songs.indexOf(this.state.currSong);
-            console.log(i);
-            if (i === this.state.songs.length - 1) {
+            const i = this.state.songs.findIndex(song => {
+                return song.title === this.state.currSong.title;
+            });
+            console.log(`Song index: ${i}`);
+            console.log(`Number of songs: ${this.state.songs.length}`);
+            if (i === this.state.songs.length - 2) {
                 // Get new songs...
-                console.log("Getting the next 4 songs...");
+                console.log("Getting the next songs...");
                 this.getSongs(this.state.currStation);
-                this.nextSong();
+                this.setState({
+                    currSong: this.state.songs[i + 1]
+                });
             }
             else {
+                console.log(`Setting current to song index: ${i + 1}`);
                 this.setState({
                     currSong: this.state.songs[i + 1]
                 });

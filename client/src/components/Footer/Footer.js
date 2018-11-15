@@ -43,7 +43,7 @@ class Footer extends React.Component {
                     <div className="controlBox" onClick={this.props.playPause}>
                         <Glyphicon glyph={this.props.playing} />
                     </div>
-                    <div className="controlBox">
+                    <div className="controlBox" onClick={this.props.nextSong}>
                         <Glyphicon glyph="fast-forward" onClick={this.props.nextSong} />
                     </div>
                     <div className="controlBox" id="volume-button">
