@@ -67,9 +67,13 @@ class Amphora extends React.Component {
         });
     }
 
+    getSongCurrTime = event => {
+        console.log(event);
+        console.log(event.timeStamp);
+    }
+
     songSkip = () => {
         console.log("Skipping to next song.");
-
     }
 
     // Use to decide when to get more songs.
@@ -90,7 +94,11 @@ class Amphora extends React.Component {
                 <SongContainer
                     songs={this.state.songs}
                 />
-                <Footer song={this.state.currSong} songSkip={this.songSkip} />
+                <Footer
+                    getSongTime={this.getSongCurrTime}
+                    song={this.state.currSong}
+                    songSkip={this.songSkip}
+                />
             </React.Fragment>
         );
     }

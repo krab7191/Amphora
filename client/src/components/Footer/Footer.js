@@ -77,7 +77,14 @@ class Footer extends React.Component {
                         />
                     </div>
                 </div>
-                <audio ref={this.audio} src={this.props.song ? this.props.song.audioURL : ""} id="audio-tag" autoPlay />
+                <audio
+                    onTimeUpdate={this.props.getSongTime}
+                    onEnded={this.props.nextSong}
+                    ref={this.audio}
+                    src={this.props.song ? this.props.song.audioURL : ""}
+                    id="audio-tag"
+                    autoPlay
+                />
             </div>
         )
     }
