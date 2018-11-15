@@ -2,6 +2,7 @@
 const { pandoraClient } = require('../controllers/userController');
 let stations;
 let songs;
+let first = true;
 
 // These methods interact with the Pandora API
 module.exports = {
@@ -17,18 +18,24 @@ module.exports = {
         });
     },
     getSongs: (req, res) => {
+        let isFirst;
         const { name } = req.params;
         console.log("Get songs from apiController");
         console.log(name);
         // Get the station associated with the incoming station name
         const station = stations.find(sta => sta.name === name);
-        station.getSongList(true).then(results => {
+        station.getSongList(first).then(results => {
+            // After the first set of songs, pass false (See API docs)
+            if (first) {
+                first = false;
+            }
             songs = results;
             const songDetails = extractSongMetadata();
             // console.log(songDetails);
             res.json({ songs: songDetails });
         }).catch((err) => {
             console.log(`Error getting songs: ${err}`);
+            res.json({ error: "Error gettings songs" })
         });
     }
 };
