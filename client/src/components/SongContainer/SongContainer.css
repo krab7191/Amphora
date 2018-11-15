@@ -6,3 +6,7 @@
     border-radius: 1px;
     box-shadow: 0 0 8px 0 #000080;
 }
+
+.playing {
+    background-color: lightblue;
+}

@@ -17,19 +17,17 @@ class Amphora extends React.Component {
             songs: [],
             currSong: null,
             playing: 'play',
-            volume: .5
+            volume: .5,
+            started: false
         };
     }
 
     componentDidUpdate() {
         if (this.state.songs.length === 0 && this.state.stations.length !== 0) {
+            console.log("Component updated and getting songs");
             this.getSongs(this.state.currStation);
         }
     }
-
-    // componentDidMount() {
-    //     console.log(this.state.user);
-    // }
 
     changeStation = event => {
         const { name } = event.target;
@@ -80,9 +78,12 @@ class Amphora extends React.Component {
             playing: 'pause'
         }, () => {
             const i = this.state.songs.indexOf(this.state.currSong);
+            console.log(i);
             if (i === this.state.songs.length - 1) {
                 // Get new songs...
+                console.log("Getting the next 4 songs...");
                 this.getSongs(this.state.currStation);
+                this.nextSong();
             }
             else {
                 this.setState({
@@ -90,11 +91,6 @@ class Amphora extends React.Component {
                 });
             }
         });
-    }
-
-    // Use to decide when to get more songs.
-    isEndSongArray = () => {
-
     }
 
     readyToPlay = () => {
@@ -134,6 +130,7 @@ class Amphora extends React.Component {
                 />
                 <SongContainer
                     songs={this.state.songs}
+                    curr={this.state.songs.indexOf(this.state.currSong)}
                 />
                 <Footer
                     nextSong={this.nextSong}
@@ -148,14 +145,6 @@ class Amphora extends React.Component {
                     volume={this.state.volume}
                     autoPlay
                 />
-                {/* <audio
-                    onTimeUpdate={this.props.getSongTime}
-                    onEnded={this.props.nextSong}
-                    ref={this.audio}
-                    src={this.props.song ? this.props.song.audioURL : ""}
-                    id="audio-tag"
-                    autoPlay
-                /> */}
             </React.Fragment>
         );
     }

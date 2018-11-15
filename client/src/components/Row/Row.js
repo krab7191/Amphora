@@ -19,12 +19,12 @@ class Row extends React.Component {
 
     render() {
         return (
-            <div className={`row song ${this.props.class}`} >
+            <div className={`row song ${this.props.isPlay}`} >
                 <div className="col-xs-2">
-                    <img src={this.props.art[2].url} alt={this.props.title} className="album-art" />
+                    <img src={this.props.art && this.props.art[2].url} alt={this.props.title} className="album-art" />
                 </div>
                 <div className="col-xs-6 container">
-                    <p className="row"><strong>{this.props.title}</strong></p>
+                    <p className="row"><strong>{this.props.title || "Getting songs..."}</strong></p>
                     <p className="row">by <strong>{this.props.artist}</strong></p>
                     <p className="row">from <em>{this.props.album}</em></p>
                     {

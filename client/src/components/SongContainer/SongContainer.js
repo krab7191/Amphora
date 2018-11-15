@@ -4,13 +4,6 @@ import Row from "../Row";
 import './SongContainer.css';
 
 class SongContainer extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            currentPlaying: ""
-        };
-    }
-
 
     componentDidMount() {
         console.log("SongContainer mounted");
@@ -25,7 +18,7 @@ class SongContainer extends React.Component {
                         <Row
                             {...song}
                             key={i}
-                            className={song.name === this.state.currentPlaying ? "playing" : ''}
+                            isPlay={i === this.props.curr ? 'playing' : ''}
                         />
                     ))
                 }
