@@ -19,8 +19,32 @@ class LoginForm extends React.Component {
 		this.state = {
 			email: '',
 			password: '',
-			redirectTo: null
+			redirectTo: null,
+			legalConfirmed: false
 		};
+	}
+
+	componentDidMount() {
+		// Do legal stuff here
+		if (typeof (Storage) !== "undefined") {
+			console.log(localStorage.getItem('legalConfirmed'));
+			this.setState({
+				legalConfirmed: localStorage.getItem('legalConfirmed')
+			}, () => {
+				console.log(this.state.legalConfirmed);
+			});
+		} else {
+			console.log("No local storage support");
+		}
+	}
+	agree = () => {
+		localStorage.setItem("legalConfirmed", true);
+		this.setState({
+			legalConfirmed: localStorage.getItem("legalConfirmed")
+		});
+	}
+	disagree = () => {
+		alert("Sorry, you can't use this awesome software");
 	}
 
 	handleChange(e) {
@@ -46,6 +70,17 @@ class LoginForm extends React.Component {
 			return (
 				<>
 					<SimpleHeader />
+					{
+						!this.state.legalConfirmed && <div id="legalBox">
+							Amphora is currently in Beta and does not fully implement all intended features. Amphora is not associated with Pandora Media Inc. in any way. By using Amphora you must agree to the following conditions: <br />
+							- Its use may violate the Terms of Use of Pandora.com. <br />
+							- Amphora is not responsible for any legal repercussions incurred due to its use. This includes but is not limited to the suspension of your account. <br />
+							- By using Amphora you agree that you have a premium account or are otherwise allowed to stream from Pandora without playing ads.
+							<br />
+							<Button onClick={this.disagree}>I do not agree</Button>
+							<Button onClick={this.agree}>I agree</Button>
+						</div>
+					}
 					<Form className="abs-center container width-40" >
 						<p className="white-text">Login to Pandora</p>
 						<FormGroup

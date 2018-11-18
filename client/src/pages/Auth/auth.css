@@ -16,3 +16,17 @@ a:hover {
 .width-40 {
     width: 40%;
 }
+
+#legalBox {
+    padding: 30px;
+    border-radius: 4px;
+    position: fixed;
+    height: 80%;
+    width: 80%;
+    background-color: white;
+    color: black;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    z-index: 999;
+}
