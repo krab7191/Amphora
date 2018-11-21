@@ -129,9 +129,14 @@ class Amphora extends React.Component {
         }
         else {
             // Song is paused
-            this.rap.audioEl.play();
-            this.setState({
+            this.rap.audioEl.play().then(() => {
+                console.log(".play() succeeded");
+                this.setState({
                 playing: 'pause'
+            });
+            }).catch(err => {
+                console.log(`${err} : .play() method failed.`);
+
             });
         }
     }
