@@ -142,8 +142,8 @@ class Amphora extends React.Component {
     }
 
     audioError = e => {
-        console.error("Audio error: " + e);
-        this.nextSong();
+        console.info("Audio error: ");
+        console.error(e);
     }
 
     render() {
@@ -174,7 +174,7 @@ class Amphora extends React.Component {
                     volume={this.state.volume}
                     autoPlay
                 />
-                <div id="version-tag">Beta v0.41</div>
+                <div id="version-tag">Beta v0.42</div>
             </React.Fragment>
         );
     }
