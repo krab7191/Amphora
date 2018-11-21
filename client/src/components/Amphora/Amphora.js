@@ -132,13 +132,18 @@ class Amphora extends React.Component {
             this.rap.audioEl.play().then(() => {
                 console.log(".play() succeeded");
                 this.setState({
-                playing: 'pause'
-            });
+                    playing: 'pause'
+                });
             }).catch(err => {
                 console.log(`${err} : .play() method failed.`);
 
             });
         }
+    }
+
+    audioError = e => {
+        console.error("Audio error: " + e);
+        this.nextSong();
     }
 
     render() {
@@ -165,6 +170,7 @@ class Amphora extends React.Component {
                     src={this.state.currSong ? this.state.currSong.audioURL : ""}
                     onCanPlay={this.readyToPlay}
                     onEnded={this.nextSong}
+                    onError={this.audioError}
                     volume={this.state.volume}
                     autoPlay
                 />
