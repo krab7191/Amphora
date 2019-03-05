@@ -132,7 +132,7 @@ class App extends React.Component {
 		return (
 			<div className="App">
 				{/* Logged in users receive: */}
-				{this.state.loggedIn && (
+				{!this.state.loggedIn && (
 					<div className="main-view">
 						<Switch>
 							<Route exact path="/" component={() => <Amphora user={this.state.user} releaseVersion={this.state.releaseVersion} />} />
@@ -141,7 +141,7 @@ class App extends React.Component {
 					</div>
 				)}
 				{/* Non-authed users receive login page */}
-				{!this.state.loggedIn && (
+				{this.state.loggedIn && (
 					<Route exact path="/" component={() => <LoginForm
 						login={this.login}
 						loginGuest={this.loginGuest}
