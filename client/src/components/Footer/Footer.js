@@ -1,13 +1,13 @@
-import React from 'react';
-import Glyphicon from 'react-bootstrap/lib/Glyphicon';
+import React, { Component } from 'react';
 import Slider, { createSliderWithTooltip } from 'rc-slider';
-
 import 'rc-slider/assets/index.css';
 import './Footer.css';
 
 const TooltipSlider = createSliderWithTooltip(Slider);
 
-class Footer extends React.Component {
+import { Play, Pause } from 'react-fontawesome';
+
+class Footer extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -41,13 +41,13 @@ class Footer extends React.Component {
             >
                 <div className="hCenter">
                     <div className="controlBox" onClick={this.props.playPause}>
-                        <Glyphicon glyph={this.props.playing} />
+                        {this.props.playing ? <Play /> : <Pause />}
                     </div>
                     <div className="controlBox" onClick={this.props.nextSong}>
-                        <Glyphicon glyph="fast-forward" onClick={this.props.nextSong} />
+                        {/* <Glyphicon glyph="fast-forward" onClick={this.props.nextSong} /> */}
                     </div>
                     <div className="controlBox" id="volume-button">
-                        <Glyphicon glyph={this.state.volumeIcon} />
+                        {/* <Glyphicon glyph={this.state.volumeIcon} /> */}
                     </div>
                     <div id="volume-slider" >
                         <TooltipSlider

@@ -1,0 +1,12 @@
+
+#changelog-container {
+    position: fixed;
+    width: 80%;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 15px;
+    box-shadow: 4px 8px 4px;
+}

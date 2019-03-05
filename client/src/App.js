@@ -12,8 +12,16 @@ class App extends React.Component {
 
 		this.state = {
 			loggedIn: false,
-			user: null
+			user: null,
+			releaseVersion: "0.43",
+			lastLocalVersion: null,
+			showChangelog: null
 		};
+	}
+
+	changelogHandler = e => {
+		console.log(e.target);
+		localStorage.setItem('releaseVersion', this.state.releaseVersion);
 	}
 
 	logout = (event) => {
@@ -94,12 +102,30 @@ class App extends React.Component {
 		return null;
 	}
 
+	componentDidMount = () => {
+		// Handle displaying changelog
+		if (typeof (Storage) !== "undefined") {
+			// Set it if it has been cleared or never set.
+			if (localStorage.getItem('showChangelog') === null) {
+				localStorage.setItem('showChangelog', true);
+				localStorage.setItem('releaseVersion', this.state.releaseVersion);
+			}
+			this.setState({
+				showChangelog: localStorage.getItem('showChangelog'),
+				lastLocalVersion: localStorage.getItem('releaseVersion')
+			});
+		} else {
+			console.log("No local storage support");
+		}
+	}
+
 	render() {
+		console.log(this.state.showChangelog, this.state.releaseVersion, this.state.lastLocalVersion);
 
 		return (
 			<div className="App">
 				{/* Logged in users receive: */}
-				{this.state.loggedIn && (
+				{!this.state.loggedIn && (
 					<div className="main-view">
 						<Switch>
 							<Route exact path="/" component={() => <Amphora user={this.state.user} />} />
@@ -108,12 +134,15 @@ class App extends React.Component {
 					</div>
 				)}
 				{/* Non-authed users receive login page */}
-				{!this.state.loggedIn && (
+				{this.state.loggedIn && (
 					<Route exact path="/" component={() => <LoginForm
 						login={this.login}
 						loginGuest={this.loginGuest}
 						validateLength={this.validateLength}
 						validateEmail={this.validateEmail}
+						showChangelog={((this.state.showChangelog === false) || (this.state.releaseVersion === this.state.lastLocalVersion)) ? false : true}
+						setReleaseVersion={this.setReleaseVersion}
+						changelogHandler={this.changelogHandler}
 					/>} />
 				)}
 			</div>

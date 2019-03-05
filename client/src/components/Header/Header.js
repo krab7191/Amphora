@@ -1,14 +1,14 @@
-import React from 'react';
-import Navbar from 'react-bootstrap/lib/Navbar';
-import Nav from 'react-bootstrap/lib/Nav';
-import NavItem from 'react-bootstrap/lib/NavItem';
-import NavDropdown from 'react-bootstrap/lib/NavDropdown';
-import MenuItem from 'react-bootstrap/lib/MenuItem';
-import Glyphicon from 'react-bootstrap/lib/Glyphicon';
+import React, { Component } from 'react';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import NavItem from 'react-bootstrap/NavItem';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import MenuItem from 'react-bootstrap/DropdownMenu';
 
 import './Header.css';
+const FontAwesome = require('react-fontawesome');
 
-class Header extends React.Component {
+class Header extends Component {
     // constructor(props) {
     //     super(props);
     // }
@@ -22,25 +22,23 @@ class Header extends React.Component {
     render() {
 
         return (
-            <Navbar fixedTop collapseOnSelect className="main-navbar">
-                <Navbar.Header>
-                    <Navbar.Brand>
-                        <img alt="Amphora logo" className="logo pull-left" />
-                    </Navbar.Brand>
-                    <Navbar.Toggle />
-                    <h1 className="pull-left white-text margin-left-10">Amphora</h1>
-                </Navbar.Header>
+            <Navbar fixedtop="true" collapseOnSelect className="main-navbar">
+                <Navbar.Brand>
+                    <img alt="Amphora logo" className="logo pull-left" />
+                </Navbar.Brand>
+                <Navbar.Toggle />
+                <h1 className="pull-left white-text margin-left-10">Amphora</h1>
                 <Navbar.Collapse>
-                    <Nav pullRight>
+                    <Nav pullright="true">
                         <NavItem>
-                            <Glyphicon glyph="cog" className="white-text" />
+                            <FontAwesome name='cog' />
                             <p className="inline padding-left-10 white-text">Settings</p>
                         </NavItem>
-                        <NavDropdown eventKey={1} title={this.props.currStation} id="station-dropdown">
+                        <NavDropdown eventkey={1} title={this.props.currStation} id="station-dropdown">
                             {
                                 this.props.stations.map((station, i) => (
                                     <MenuItem
-                                        eventKey={`1.${i}`}
+                                        eventkey={`1.${i}`}
                                         key={i}
                                         name={station}
                                         onClick={this.props.changeStation}

@@ -1,7 +1,7 @@
 module.exports = {
-  Client: require('./lib/client/Client.js'),
-  User: require('./lib/structures/User.js'),
-  Station: require('./lib/structures/Station.js'),
-  Song: require('./lib/structures/Song.js'),
-  Collection: require('./lib/structures/Collection.js')
+  Client: require('./lib/client/Client'),
+  User: require('./lib/structures/User'),
+  Station: require('./lib/structures/Station'),
+  Song: require('./lib/structures/Song'),
+  Collection: require('./lib/structures/Collection')
 };
