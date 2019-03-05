@@ -19,9 +19,8 @@
     display: inline;
 }
 
-#station-dropdown {
-    background-color: #0F87F5;
-    color: white;
+#root > div > div > nav > div > div > div > a {
+    color: white; 
 }
 
 .navbar-default .navbar-toggle .icon-bar, .navbar-collapse.collapse.in>ul>li.dropdown.open>ul>li>a {

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import Form from 'react-bootstrap/lib/Form';
-import FormGroup from 'react-bootstrap/lib/FormGroup';
-import FormControl from 'react-bootstrap/lib/FormControl';
-import Button from 'react-bootstrap/lib/Button';
+import Form from 'react-bootstrap/Form';
+import FormGroup from 'react-bootstrap/FormGroup';
+import FormControl from 'react-bootstrap/FormControl';
+import Button from 'react-bootstrap/Button';
+import Changelog from '../../components/Changelog';
 
 import SimpleHeader from '../../components/SimpleHeader';
 
@@ -25,13 +26,11 @@ class LoginForm extends React.Component {
 	}
 
 	componentDidMount() {
+		console.log(`Mounting LoginForm. Show the changelog? ${this.props.showChangelog}`);
 		// Do legal stuff here
 		if (typeof (Storage) !== "undefined") {
-			console.log(localStorage.getItem('legalConfirmed'));
 			this.setState({
 				legalConfirmed: localStorage.getItem('legalConfirmed')
-			}, () => {
-				console.log(this.state.legalConfirmed);
 			});
 		} else {
 			console.log("No local storage support");
@@ -86,7 +85,7 @@ class LoginForm extends React.Component {
 						<FormGroup
 							controlId="loginEmail"
 							className="row"
-							validationState={this.props.validateEmail(this.state.email)}
+							validationstate={this.props.validateEmail(this.state.email)}
 						>
 
 							<FormControl
@@ -101,7 +100,7 @@ class LoginForm extends React.Component {
 						<FormGroup
 							controlId="loginPassword"
 							className="row"
-							validationState={this.props.validateLength(this.state.password)}
+							validationstate={this.props.validateLength(this.state.password)}
 						>
 							<FormControl
 								type="password"
@@ -123,7 +122,7 @@ class LoginForm extends React.Component {
 								type="submit"
 								onClick={this.handleSubmit}
 								className="pull-right col-md-4"
-								bsStyle="info"
+								bsstyle="info"
 							>
 								Log in
 						</Button>
@@ -134,6 +133,7 @@ class LoginForm extends React.Component {
 							className="white-text"
 						>Test (proposed layout)</Link> */}
 					</Form>
+					{this.props.showChangelog && <Changelog hidden={this.props.changelogHidden ? "hidden" : "visible"} changelogHandler={this.props.changelogHandler} closeChangelog={this.props.closeChangelog} />}
 				</>
 			)
 		}

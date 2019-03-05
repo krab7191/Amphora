@@ -20,13 +20,13 @@ class Row extends React.Component {
     render() {
         return (
             <div className={`row song ${this.props.isPlay}`} >
-                <div className="col-xs-2">
+                <div>
                     <img src={this.props.art && this.props.art[2].url} alt={this.props.title} className="album-art" />
                 </div>
-                <div className="col-xs-6 container">
-                    <p className="row"><strong>{this.props.title || "Getting songs..."}</strong></p>
-                    <p className="row">by <strong>{this.props.artist}</strong></p>
-                    <p className="row">from <em>{this.props.album}</em></p>
+                <div className="song-details">
+                    <p><strong>{this.props.title || "Getting songs..."}</strong></p>
+                    <p>by <strong>{this.props.artist}</strong></p>
+                    <p>from <em>{this.props.album}</em></p>
                     {
                         this.props.isPlaying && <p className="row">0:00 / {this.formatSongLength(this.props.length)}</p>
                     }

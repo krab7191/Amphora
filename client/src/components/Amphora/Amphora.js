@@ -174,7 +174,7 @@ class Amphora extends React.Component {
                     volume={this.state.volume}
                     autoPlay
                 />
-                <div id="version-tag">Beta v0.42</div>
+                <div id="version-tag">Beta v{this.props.releaseVersion}</div>
             </React.Fragment>
         );
     }
