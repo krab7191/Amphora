@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Changelog.css';
 import Form from "react-bootstrap/Form";
 import FormGroup from 'react-bootstrap/FormGroup';
-import FormControl from 'react-bootstrap/FormControl';
+import Button from 'react-bootstrap/Button';
 
 class Changelog extends Component {
     constructor(props) {
@@ -12,7 +12,9 @@ class Changelog extends Component {
                 {
                     version: '0.43',
                     changes: [
-                        "Changelog added. Upon every new release, changelog will show unless user specifies to never show changelog again."
+                        "Changelog added. Upon every new release, changelog will show unless user specifies to never show changelog again.",
+                        "Migrate to Bootstrap 4. All components were updated to reflect the changes from BS 3 to BS 4.",
+                        "Removed unused 'Settings' tab and corresponding gear icon"
                     ]
                 }
             ]
@@ -20,8 +22,10 @@ class Changelog extends Component {
     };
 
     render() {
+        const hide = this.props.hidden;
+
         return (
-            <div id="changelog-container">
+            <div id="changelog-container" className={hide}>
                 <h3 style={{ textAlign: 'center' }}>Changelog</h3>
                 {this.state.logs.map((entry, i) => (
                     <div key={i} >
@@ -36,12 +40,17 @@ class Changelog extends Component {
                 ))}
                 <Form>
                     <FormGroup>
-                        <Form.Label htmlFor='showChangelog'>Show Changelog?</Form.Label>
-                        <FormControl
+                        <Form.Check
                             type="checkbox"
-                            id="showChangelog"
-                            onChange={this.props.changelogHandler}
-                        ></FormControl>
+                            id="changelog-checkbox"
+                            label="Hide changelog for future releases"
+                            onChange={e => this.props.changelogHandler(e)}
+                        />
+                        <Button
+                            onClick={this.props.closeChangelog}
+                            className="justify-content-right"
+                            bsstyle="info"
+                        >Ok</Button>
                     </FormGroup>
                 </Form>
             </div >

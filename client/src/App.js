@@ -15,13 +15,19 @@ class App extends React.Component {
 			user: null,
 			releaseVersion: "0.43",
 			lastLocalVersion: null,
-			showChangelog: null
+			showChangelog: null,
+			changelogHidden: false
 		};
 	}
 
 	changelogHandler = e => {
-		console.log(e.target);
 		localStorage.setItem('releaseVersion', this.state.releaseVersion);
+		localStorage.setItem('showChangelog', !e.target.checked);
+	}
+	closeChangelog = e => {
+		e.preventDefault();
+		localStorage.setItem('releaseVersion', this.state.releaseVersion);
+		this.setState({ changelogHidden: true });
 	}
 
 	logout = (event) => {
@@ -108,12 +114,13 @@ class App extends React.Component {
 			// Set it if it has been cleared or never set.
 			if (localStorage.getItem('showChangelog') === null) {
 				localStorage.setItem('showChangelog', true);
-				localStorage.setItem('releaseVersion', this.state.releaseVersion);
 			}
-			this.setState({
-				showChangelog: localStorage.getItem('showChangelog'),
-				lastLocalVersion: localStorage.getItem('releaseVersion')
-			});
+			else {
+				this.setState({
+					showChangelog: localStorage.getItem('showChangelog'),
+					lastLocalVersion: localStorage.getItem('releaseVersion')
+				});
+			}
 		} else {
 			console.log("No local storage support");
 		}
@@ -141,8 +148,10 @@ class App extends React.Component {
 						validateLength={this.validateLength}
 						validateEmail={this.validateEmail}
 						showChangelog={((this.state.showChangelog === false) || (this.state.releaseVersion === this.state.lastLocalVersion)) ? false : true}
+						changelogHidden={this.state.changelogHidden}
 						setReleaseVersion={this.setReleaseVersion}
 						changelogHandler={this.changelogHandler}
+						closeChangelog={this.closeChangelog}
 					/>} />
 				)}
 			</div>

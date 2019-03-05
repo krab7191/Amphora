@@ -133,7 +133,7 @@ class LoginForm extends React.Component {
 							className="white-text"
 						>Test (proposed layout)</Link> */}
 					</Form>
-					{this.props.showChangelog && <Changelog changelogHandler={this.props.changelogHandler} />}
+					{this.props.showChangelog && <Changelog hidden={this.props.changelogHidden ? "hidden" : "visible"} changelogHandler={this.props.changelogHandler} closeChangelog={this.props.closeChangelog} />}
 				</>
 			)
 		}

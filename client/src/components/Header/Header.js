@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import NavItem from 'react-bootstrap/NavItem';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import MenuItem from 'react-bootstrap/DropdownMenu';
 
 import './Header.css';
-import FontAwesome from 'react-fontawesome';
+// import FontAwesome from 'react-fontawesome';
 
 class Header extends Component {
     // constructor(props) {

@@ -3,8 +3,8 @@ import Slider, { createSliderWithTooltip } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import './Footer.css';
 
-import { FontAwesome } from 'react-fontawesome';
-import faStyles from 'react-fontawesome/lib/index';
+// import { FontAwesome } from 'react-fontawesome';
+// import faStyles from 'react-fontawesome/lib/index';
 
 const TooltipSlider = createSliderWithTooltip(Slider);
 
