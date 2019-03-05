@@ -6,7 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import MenuItem from 'react-bootstrap/DropdownMenu';
 
 import './Header.css';
-const FontAwesome = require('react-fontawesome');
+import FontAwesome from 'react-fontawesome';
 
 class Header extends Component {
     // constructor(props) {
@@ -22,29 +22,32 @@ class Header extends Component {
     render() {
 
         return (
-            <Navbar fixedtop="true" collapseOnSelect className="main-navbar">
+            <Navbar fixed="top" collapseOnSelect className="main-navbar">
                 <Navbar.Brand>
                     <img alt="Amphora logo" className="logo pull-left" />
                 </Navbar.Brand>
-                <Navbar.Toggle />
                 <h1 className="pull-left white-text margin-left-10">Amphora</h1>
-                <Navbar.Collapse>
-                    <Nav pullright="true">
-                        <NavItem>
-                            <FontAwesome name='cog' />
+                <Navbar.Collapse className="justify-content-end">
+                    <Nav>
+                        {/* <NavItem>
+                            <FontAwesome
+                                name="cog"
+                                spin
+                                ariahidden="false"
+                            />
                             <p className="inline padding-left-10 white-text">Settings</p>
-                        </NavItem>
+                        </NavItem> */}
                         <NavDropdown eventkey={1} title={this.props.currStation} id="station-dropdown">
                             {
                                 this.props.stations.map((station, i) => (
-                                    <MenuItem
+                                    <NavDropdown.Item
                                         eventkey={`1.${i}`}
                                         key={i}
                                         name={station}
                                         onClick={this.props.changeStation}
                                     >
                                         {station}
-                                    </MenuItem>
+                                    </NavDropdown.Item>
                                 ))
                             }
                         </NavDropdown>

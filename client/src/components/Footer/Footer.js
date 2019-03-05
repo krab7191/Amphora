@@ -3,9 +3,11 @@ import Slider, { createSliderWithTooltip } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import './Footer.css';
 
+import { FontAwesome } from 'react-fontawesome';
+import faStyles from 'react-fontawesome/lib/index';
+
 const TooltipSlider = createSliderWithTooltip(Slider);
 
-import { Play, Pause } from 'react-fontawesome';
 
 class Footer extends Component {
     constructor(props) {
@@ -41,7 +43,8 @@ class Footer extends Component {
             >
                 <div className="hCenter">
                     <div className="controlBox" onClick={this.props.playPause}>
-                        {this.props.playing ? <Play /> : <Pause />}
+                        {/* {this.props.playing ? <Play /> : <Pause />} */}
+                        {/* <FontAwesome name="play" /> */}
                     </div>
                     <div className="controlBox" onClick={this.props.nextSong}>
                         {/* <Glyphicon glyph="fast-forward" onClick={this.props.nextSong} /> */}
