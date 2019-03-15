@@ -35,7 +35,7 @@ class Header extends Component {
                             />
                             <p className="inline padding-left-10 white-text">Settings</p>
                         </NavItem> */}
-                        <NavDropdown eventkey={1} title={this.props.currStation} id="station-dropdown" alignRight class="white-text">
+                        <NavDropdown eventkey={1} title={this.props.currStation} id="station-dropdown" alignRight className="white-text">
                             {
                                 this.props.stations.map((station, i) => (
                                     <NavDropdown.Item

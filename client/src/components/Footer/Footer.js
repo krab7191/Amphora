@@ -3,9 +3,7 @@ import Slider, { createSliderWithTooltip } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import './Footer.css';
 
-// import { FontAwesome } from 'react-fontawesome';
-// import faStyles from 'react-fontawesome/lib/index';
-
+const FontAwesome = require('react-fontawesome');
 const TooltipSlider = createSliderWithTooltip(Slider);
 
 
@@ -37,20 +35,21 @@ class Footer extends Component {
     }
 
     render() {
+        console.log(this.props.playing);
+
         return (
             <div
                 className="footer"
             >
                 <div className="hCenter">
                     <div className="controlBox" onClick={this.props.playPause}>
-                        {/* {this.props.playing ? <Play /> : <Pause />} */}
-                        {/* <FontAwesome name="play" /> */}
+                        <FontAwesome name={this.props.playing} onClick={this.props.playPause} />
                     </div>
                     <div className="controlBox" onClick={this.props.nextSong}>
-                        {/* <Glyphicon glyph="fast-forward" onClick={this.props.nextSong} /> */}
+                        <FontAwesome name="step-forward" onClick={this.props.nextSong} />
                     </div>
                     <div className="controlBox" id="volume-button">
-                        {/* <Glyphicon glyph={this.state.volumeIcon} /> */}
+                        <FontAwesome name={this.state.volumeIcon} />
                     </div>
                     <div id="volume-slider" >
                         <TooltipSlider
