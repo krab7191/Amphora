@@ -10,6 +10,12 @@ class Changelog extends Component {
         this.state = {
             logs: [
                 {
+                    version: '0.43.01',
+                    changes: [
+                        "Fix media control bug. 'Play', 'skip', and 'volume' icons are back!"
+                    ]
+                },
+                {
                     version: '0.43',
                     changes: [
                         "Changelog added. Upon every new release, changelog will show unless user specifies to never show changelog again.",
