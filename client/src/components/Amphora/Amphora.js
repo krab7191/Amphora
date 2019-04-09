@@ -17,8 +17,9 @@ class Amphora extends React.Component {
       songs: [],
       currSong: null,
       playing: "play",
-      volume: 0.5,
-      started: false
+      volume: 0.8,
+      started: false,
+      volumeIcon: "volume-down"
     };
   }
 
@@ -26,6 +27,40 @@ class Amphora extends React.Component {
     if (this.state.songs.length === 0 && this.state.stations.length !== 0) {
       this.getSongs(this.state.currStation);
     }
+  }
+
+  componentDidMount() {
+    document.onkeydown = e => {
+      if (e.key === " " || e.key === "ArrowUp" || e.key === "ArrowDown") {
+        e.preventDefault();
+      }
+    };
+    document.onkeyup = e => {
+      switch (e.key) {
+        case " ":
+          this.playPause();
+          break;
+        case "ArrowUp":
+          let vup = Math.round((this.state.volume + 0.1) * 100) / 100;
+          if (vup > 1) {
+            vup = 1;
+          }
+          this.volumeHandler(vup);
+          break;
+        case "ArrowDown":
+          let v = Math.round((this.state.volume - 0.1) * 100) / 100;
+          if (v < 0) {
+            v = 0;
+          }
+          this.volumeHandler(v);
+          break;
+        case "ArrowRight":
+          this.nextSong();
+          break;
+        default:
+          break;
+      }
+    };
   }
 
   changeStation = event => {
@@ -37,8 +72,7 @@ class Amphora extends React.Component {
         currSong: null,
         songs: []
       },
-      () => {
-      }
+      () => {}
     );
   };
 
@@ -142,6 +176,23 @@ class Amphora extends React.Component {
     }
   };
 
+  volumeHandler = e => {
+    this.setState({ volume: e });
+    if (e === 0) {
+      this.setState({
+        volumeIcon: "volume-mute"
+      });
+    } else if (e >= 0.75) {
+      this.setState({
+        volumeIcon: "volume-up"
+      });
+    } else {
+      this.setState({
+        volumeIcon: "volume-down"
+      });
+    }
+  };
+
   audioError = e => {
     console.info("Audio error: ");
     console.error(e);
@@ -164,6 +215,9 @@ class Amphora extends React.Component {
           nextSong={this.nextSong}
           playing={this.state.playing}
           playPause={this.playPause}
+          volumeHandler={this.volumeHandler}
+          volumeIcon={this.state.volumeIcon}
+          volume={this.state.volume}
         />
         <ReactAudioPlayer
           ref={elem => {
