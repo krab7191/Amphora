@@ -10,15 +10,19 @@ class Changelog extends Component {
     this.state = {
       logs: [
         {
-          version: "0.44.01",
-          changes: [
-            "Prevent page scroll on spacebar keydown"
-          ]
+          version: "0.44.02",
+          changes: ["Bugfixes to displaying changeLog", "Audit dependencies"]
         },
         {
-            version: "0.44",
+          version: "0.44.01",
+          changes: ["Prevent page scroll on spacebar keydown"]
+        },
+        {
+          version: "0.44",
           changes: [
-            "Double size of audio controls", "Remove borders and other minor style tweaks", "Add audio control keybindings for desktop."
+            "Double size of audio controls",
+            "Remove borders and other minor style tweaks",
+            "Add audio control keybindings for desktop."
           ]
         },
         {

@@ -12,7 +12,7 @@ class App extends React.Component {
     this.state = {
       loggedIn: false,
       user: null,
-      releaseVersion: "0.44.01",
+      releaseVersion: "0.44.02",
       lastLocalVersion: null,
       showChangelog: true,
       changelogHidden: false
@@ -29,7 +29,8 @@ class App extends React.Component {
       localStorage.setItem("showChangelog", this.state.showChangelog);
     }
     this.setState({
-      showChangelog: localStorage.getItem("showChangelog"),
+      // Convert string 'true' / 'false' from localStorage to true boolean
+      showChangelog: localStorage.getItem("showChangelog") === "true",
       changelogHidden: true
     });
   };
@@ -109,19 +110,25 @@ class App extends React.Component {
     // Handle displaying changelog
     if (typeof Storage !== "undefined") {
       const version = localStorage.getItem("releaseVersion");
-      const show = localStorage.getItem("showChangelog");
-      console.log(`version: ${version}, show? ${show}`);
+      // Convert string 'true' / 'false' from localStorage to true boolean
+      const show = localStorage.getItem("showChangelog") === "true";
       this.setState({
-        lastLocalVersion: version,
-        showChangelog: show
+        lastLocalVersion: version
       });
+      if (show !== null) {
+        this.setState({
+          showChangelog: show
+        });
+      }
+      console.log(`App.js mounted, localStorage vals: ${version}, ${show}`);
     } else {
-      console.log("No local storage support");
+      console.warn("No localStorage support!");
     }
   };
 
   render() {
     console.log(
+      "Render: ",
       this.state.showChangelog,
       this.state.releaseVersion,
       this.state.lastLocalVersion
@@ -147,7 +154,7 @@ class App extends React.Component {
           </div>
         )}
         {/* Non-authed users receive login page */}
-        {this.state.loggedIn && (
+        {!this.state.loggedIn && (
           <Route
             exact
             path="/"
