@@ -126,19 +126,12 @@ class App extends React.Component {
           showChangelog: show
         });
       }
-      console.log(`App.js mounted, localStorage vals: ${version}, ${show}`);
     } else {
       console.warn("No localStorage support!");
     }
   };
 
   render() {
-    console.log(
-      "Render: ",
-      this.state.showChangelog,
-      this.state.releaseVersion,
-      this.state.lastLocalVersion
-    );
     return (
       <div className="App">
         {/* Logged in users receive: */}
