@@ -43,7 +43,6 @@ class App extends React.Component {
       });
     } else {
       AUTH.logout().then(response => {
-        console.log(response.data);
         if (response.status === 200) {
           this.setState({
             loggedIn: false,
@@ -59,8 +58,6 @@ class App extends React.Component {
   login = (username, password) => {
     AUTH.login(username, password).then(response => {
       if (response.status === 200 && response.data.user) {
-        // console.log(response.data.user);
-        // update the state
         this.setState({
           loggedIn: true,
           user: response.data.user
@@ -114,22 +111,25 @@ class App extends React.Component {
       const version = localStorage.getItem("releaseVersion");
       const show = localStorage.getItem("showChangelog");
       console.log(`version: ${version}, show? ${show}`);
-      if (version && show !== null) {
-        this.setState({
-          lastLocalVersion: version,
-          showChangelog: show
-        });
-      }
+      this.setState({
+        lastLocalVersion: version,
+        showChangelog: show
+      });
     } else {
       console.log("No local storage support");
     }
   };
 
   render() {
+    console.log(
+      this.state.showChangelog,
+      this.state.releaseVersion,
+      this.state.lastLocalVersion
+    );
     return (
       <div className="App">
         {/* Logged in users receive: */}
-        {this.state.loggedIn && (
+        {!this.state.loggedIn && (
           <div className="main-view">
             <Switch>
               <Route
@@ -147,7 +147,7 @@ class App extends React.Component {
           </div>
         )}
         {/* Non-authed users receive login page */}
-        {!this.state.loggedIn && (
+        {this.state.loggedIn && (
           <Route
             exact
             path="/"
@@ -158,7 +158,7 @@ class App extends React.Component {
                 validateLength={this.validateLength}
                 validateEmail={this.validateEmail}
                 showChangelog={
-                  this.state.showChangelog === true &&
+                  this.state.showChangelog &&
                   this.state.releaseVersion !== this.state.lastLocalVersion
                     ? true
                     : false

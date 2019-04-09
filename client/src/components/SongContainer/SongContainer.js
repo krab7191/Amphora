@@ -5,10 +5,6 @@ import './SongContainer.css';
 
 class SongContainer extends React.Component {
 
-    componentDidMount() {
-        console.log("SongContainer mounted");
-    }
-
     render() {
 
         return (

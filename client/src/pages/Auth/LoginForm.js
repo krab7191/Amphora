@@ -127,11 +127,6 @@ class LoginForm extends React.Component {
 								Log in
 						</Button>
 						</div>
-						{/* <Link
-							to="/"
-							onClick={this.props.loginGuest}
-							className="white-text"
-						>Test (proposed layout)</Link> */}
 					</Form>
 					{this.props.showChangelog && <Changelog hidden={this.props.changelogHidden ? "hidden" : "visible"} changelogHandler={this.props.changelogHandler} closeChangelog={this.props.closeChangelog} />}
 				</>

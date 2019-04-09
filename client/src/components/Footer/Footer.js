@@ -32,7 +32,7 @@ class Footer extends Component {
   };
 
   componentDidMount() {
-    console.log("Footer mounted");
+    // Prevent page from scrolling when spacebar pressed
     document.onkeydown = e => {
       if (e.key === " ") {
         e.preventDefault();
@@ -71,8 +71,6 @@ class Footer extends Component {
   }
 
   render() {
-    console.log(this.props.playing);
-
     return (
       <div className="footer">
         <div className="hCenter">

@@ -1,32 +1,32 @@
 .white-text {
-    color: white;
+  color: white;
 }
 
 .abs-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 a:hover {
-    color: #00AED6;
+  color: #00aed6;
 }
 
 .width-40 {
-    width: 40%;
+  width: 40%;
 }
 
 #legalBox {
-    padding: 30px;
-    border-radius: 4px;
-    position: fixed;
-    height: 80%;
-    width: 80%;
-    background-color: white;
-    color: black;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
-    z-index: 999;
+  padding: 30px;
+  border-radius: 4px;
+  position: fixed;
+  height: 80%;
+  width: 80%;
+  background-color: white;
+  color: black;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  z-index: 999;
 }
