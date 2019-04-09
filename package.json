@@ -21,16 +21,12 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^3.5.0",
-    "nodemon": "^1.11.0",
-    "jsdoc": "^3.5.5",
-    "minami": "^1.2.3"
+    "nodemon": "^1.11.0"
   },
   "dependencies": {
-    "airbrake-js": "^1.4.6",
     "axios": "^0.18.0",
     "bcrypt": "^3.0.2",
     "bcryptjs": "^2.4.3",
-    "blowfish": "^1.0.1",
     "cookie": "^0.3.1",
     "dotenv": "^6.1.0",
     "event-stream": "^3.3.4",
@@ -41,6 +37,6 @@
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
     "passport-custom": "^1.0.5",
-    "snekfetch": "^3.6.4"
+    "snekfetch": "^4.0.4"
   }
 }
