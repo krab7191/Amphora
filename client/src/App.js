@@ -129,7 +129,7 @@ class App extends React.Component {
     return (
       <div className="App">
         {/* Logged in users receive: */}
-        {!this.state.loggedIn && (
+        {this.state.loggedIn && (
           <div className="main-view">
             <Switch>
               <Route

@@ -36,15 +36,15 @@ class Footer extends Component {
     document.onkeyup = e => {
       switch (e.key) {
         case " ":
-          console.log("space!");
+          this.props.playPause();
           break;
         case "ArrowUp":
-          let v = this.state.volume + 10;
-          if (v > 100) {
-            v = 100;
+          let vup = this.state.volume + 10;
+          if (vup > 100) {
+            vup = 100;
           }
           this.setState({
-            volume: v
+            volume: vup
           });
           break;
         case "ArrowDown":
@@ -57,7 +57,7 @@ class Footer extends Component {
           });
           break;
         case "ArrowRight":
-          console.log("right");
+          this.props.nextSong();
           break;
         default:
           break;
