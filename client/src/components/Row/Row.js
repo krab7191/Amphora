@@ -41,11 +41,11 @@ class Row extends React.Component {
           <p>
             from <em>{this.props.album}</em>
           </p>
-          {this.props.isPlaying && (
+          {/* {this.props.isPlaying && (
             <p className="row">
               0:00 / {this.formatSongLength(this.props.length)}
             </p>
-          )}
+          )} */}
         </div>
       </div>
     );
