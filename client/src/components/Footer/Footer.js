@@ -35,8 +35,9 @@ class Footer extends Component {
           </div>
           <div id="volume-slider">
             <TooltipSlider
+              value={this.props.volume * 100}
               defaultValue={this.props.volume * 100}
-              onChange={e => this.props.volumeHandler(e/100)}
+              onChange={e => this.props.volumeHandler(e / 100)}
               vertical={true}
             />
           </div>

@@ -93,7 +93,10 @@ class Amphora extends React.Component {
     API.getSongs(name)
       .then(resp => {
         if (resp.data.error) {
-          this.getSongs(this.state.currStation);
+          const conf = window.confirm("Error getting songs, retry?");
+          if (conf) {
+            this.getSongs(this.state.currStation);
+          }
         } else {
           this.setState(
             {
@@ -132,7 +135,7 @@ class Amphora extends React.Component {
         const i = this.state.songs.findIndex(song => {
           return song.title === this.state.currSong.title;
         });
-        if (i === this.state.songs.length - 2) {
+        if (i === this.state.songs.length - 3) {
           // Get new songs...
           this.getSongs(this.state.currStation);
           this.setState({
@@ -180,7 +183,10 @@ class Amphora extends React.Component {
     this.setState({ volume: e });
     if (e === 0) {
       this.setState({
-        volumeIcon: "volume-mute"
+        volumeIcon: "volume-mute",
+        playing: "pause"
+      }, () => {
+        this.playPause();
       });
     } else if (e >= 0.75) {
       this.setState({
