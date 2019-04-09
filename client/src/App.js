@@ -29,8 +29,9 @@ class App extends React.Component {
       localStorage.setItem("showChangelog", this.state.showChangelog);
     }
     this.setState({
-      // Convert string 'true' / 'false' from localStorage to true boolean
-      showChangelog: localStorage.getItem("showChangelog") === "true",
+      // Convert string 'true' from localStorage to true boolean, otherwise null
+      showChangelog:
+        localStorage.getItem("showChangelog") === "true" ? true : null,
       changelogHidden: true
     });
   };
@@ -111,7 +112,12 @@ class App extends React.Component {
     if (typeof Storage !== "undefined") {
       const version = localStorage.getItem("releaseVersion");
       // Convert string 'true' / 'false' from localStorage to true boolean
-      const show = localStorage.getItem("showChangelog") === "true";
+      let show = localStorage.getItem("showChangelog");
+      if (show === "true") {
+        show = true;
+      } else if (show === "false") {
+        show = false;
+      }
       this.setState({
         lastLocalVersion: version
       });

@@ -20,24 +20,10 @@ class Row extends React.Component {
     return (
       <div className={`row song ${this.props.isPlay}`}>
         <div>
-          {/* TypeError: Cannot read property 'url' of undefined
-    at t.value (Row.js:24)
-    at si (react-dom.production.min.js:3418)
-    at li (react-dom.production.min.js:3409)
-    at hi (react-dom.production.min.js:3593)
-    at Ki (react-dom.production.min.js:4600)
-    at qi (react-dom.production.min.js:4620)
-    at Ma (react-dom.production.min.js:5017)
-    at Oa (react-dom.production.min.js:4983)
-    at _a (react-dom.production.min.js:4927)
-    at Qi (react-dom.production.min.js:4847)
-    at Object.enqueueSetState (react-dom.production.min.js:2844)
-    at t.x.setState (react.production.min.js:72)
-    at Amphora.js:63 */}
-          {console.log(this.props.art)}
           <img
-            src={this.props.art && this.props.art[2].url}
-            alt={this.props.title}
+          // Only render the art if it exists (Image path error on Pandora's end)
+            src={this.props.art[2].url && this.props.art[2].url}
+            alt={this.props.title ? this.props.title : "Can't find image"}
             className="album-art"
           />
         </div>
