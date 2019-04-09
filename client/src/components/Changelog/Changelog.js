@@ -13,6 +13,7 @@ class Changelog extends Component {
           version: "0.46",
           changes: [
             "Get next 4 songs when playing next to last song",
+            "Prevent overflow song details wrapping",
             "Audio volume slider bugfixes",
             "Prompt user to retry on audio fetch error",
             "Add native scroll bounce to legalBox"
