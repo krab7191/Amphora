@@ -10,6 +10,13 @@ class Changelog extends Component {
     this.state = {
       logs: [
         {
+          version: "0.45",
+          changes: [
+            "Make up / down keys change volume",
+            "Fix arrow keybindings, and other minor bugfixes"
+          ]
+        },
+        {
           version: "0.44.02",
           changes: ["Bugfixes to displaying changeLog", "Audit dependencies"]
         },
