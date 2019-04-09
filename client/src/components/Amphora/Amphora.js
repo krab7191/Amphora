@@ -19,7 +19,7 @@ class Amphora extends React.Component {
       playing: "play",
       volume: 0.8,
       started: false,
-      volumeIcon: "volume-down"
+      volumeIcon: "volume-up"
     };
   }
 
