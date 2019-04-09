@@ -38,7 +38,6 @@ class Amphora extends React.Component {
         songs: []
       },
       () => {
-        // console.log("Station changed");
       }
     );
   };
@@ -87,12 +86,10 @@ class Amphora extends React.Component {
   };
 
   getSongCurrTime = event => {
-    console.log(event);
     console.log(event.timeStamp);
   };
 
   nextSong = () => {
-    console.log("Getting next song.");
     this.setState(
       {
         playing: "pause"
@@ -101,17 +98,13 @@ class Amphora extends React.Component {
         const i = this.state.songs.findIndex(song => {
           return song.title === this.state.currSong.title;
         });
-        console.log(`Song index: ${i}`);
-        console.log(`Number of songs: ${this.state.songs.length}`);
         if (i === this.state.songs.length - 2) {
           // Get new songs...
-          console.log("Getting the next songs...");
           this.getSongs(this.state.currStation);
           this.setState({
             currSong: this.state.songs[i + 1]
           });
         } else {
-          console.log(`Setting current to song index: ${i + 1}`);
           this.setState({
             currSong: this.state.songs[i + 1]
           });
@@ -139,7 +132,6 @@ class Amphora extends React.Component {
       this.rap.audioEl
         .play()
         .then(() => {
-          console.log(".play() succeeded");
           this.setState({
             playing: "pause"
           });

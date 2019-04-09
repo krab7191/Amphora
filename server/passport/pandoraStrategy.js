@@ -22,10 +22,6 @@ makeHeadRequest = (req, done, callback) => {
     });
 }
 
-log = stuff => {
-    console.log(stuff);
-}
-
 // Get the csrfToken value from the response header
 parseCookie = header => {
     console.log("Parsing cookie");

@@ -52,7 +52,6 @@ class LoginForm extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log("Sending login to Pandora");
     this.props.login(this.state.email, this.state.password);
     this.setState({
       redirectTo: "/"

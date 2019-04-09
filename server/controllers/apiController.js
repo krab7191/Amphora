@@ -7,7 +7,6 @@ let first = true;
 // These methods interact with the Pandora API
 module.exports = {
     getStations: (req, res) => {
-        console.log("Get stations from apiController");
         pandoraClient.user.getStations().then(st => {
             stations = st.array();
             let stNames = [];
@@ -20,8 +19,6 @@ module.exports = {
     getSongs: (req, res) => {
         let isFirst;
         const { name } = req.params;
-        console.log("Get songs from apiController");
-        console.log(name);
         // Get the station associated with the incoming station name
         const station = stations.find(sta => sta.name === name);
         station.getSongList(first).then(results => {
@@ -31,7 +28,6 @@ module.exports = {
             }
             songs = results;
             const songDetails = extractSongMetadata();
-            // console.log(songDetails);
             res.json({ songs: songDetails });
         }).catch((err) => {
             console.log(`Error getting songs: ${err}`);

@@ -9,7 +9,6 @@ const { Client } = require("pandora.js");
 const pandoraClient = new Client();
 
 pandoraClient.on("ready", () => {
-  // console.log("Pandora client ready");
 });
 
 // Defining methods for the userController
@@ -34,14 +33,11 @@ module.exports = {
   },
   auth: function(req, res, next) {
     console.log(req.body);
-    console.log("Auth function hit, next()");
     next();
   },
   // controller for pandoraJS
   pandoraAuth: function(req, res) {
     const { username, password } = req.body;
-    // console.log(username, password);
-
     pandoraClient
       .login(username, password)
       .then(() => {
@@ -53,12 +49,10 @@ module.exports = {
       });
   },
   authenticate: (req, res) => {
-    console.log("Authenticate method hit");
     console.log(`authenticate: ${req}`);
     const { user } = req;
     const cleanUser = Object.assign({}, user);
     if (cleanUser) {
-      console.log(`Deleting ${cleanUser.password}`);
       delete cleanUser.password;
     }
     res.json({ user: cleanUser });
@@ -75,6 +69,5 @@ parseUserCredentials = obj => {
     kruxToken: kruxToken,
     listenerToken: listenerToken
   };
-  // console.log(user);
   return user;
 };
