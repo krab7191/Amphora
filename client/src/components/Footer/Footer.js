@@ -31,6 +31,40 @@ class Footer extends Component {
     }
   };
 
+  componentDidMount() {
+    console.log("Footer mounted");
+    document.onkeyup = e => {
+      switch (e.key) {
+        case " ":
+          console.log("space!");
+          break;
+        case "ArrowUp":
+          let v = this.state.volume + 10;
+          if (v > 100) {
+            v = 100;
+          }
+          this.setState({
+            volume: v
+          });
+          break;
+        case "ArrowDown":
+          let v = this.state.volume - 10;
+          if (v < 0) {
+            v = 0;
+          }
+          this.setState({
+            volume: v
+          });
+          break;
+        case "ArrowRight":
+          console.log("right");
+          break;
+        default:
+          break;
+      }
+    };
+  }
+
   render() {
     console.log(this.props.playing);
 
