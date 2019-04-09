@@ -33,6 +33,11 @@ class Footer extends Component {
 
   componentDidMount() {
     console.log("Footer mounted");
+    document.onkeydown = e => {
+      if (e.key === " ") {
+        e.preventDefault();
+      }
+    };
     document.onkeyup = e => {
       switch (e.key) {
         case " ":
