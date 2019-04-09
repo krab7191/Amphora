@@ -21,8 +21,12 @@ class Row extends React.Component {
       <div className={`row song ${this.props.isPlay}`}>
         <div>
           <img
-          // Only render the art if it exists (Image path error on Pandora's end)
-            src={this.props.art[2].url && this.props.art[2].url}
+            // Only render the art if it exists (Image path error on Pandora's end)
+            src={
+              this.props.art[2].url
+                ? this.props.art[2].url
+                : "https://via.placeholder.com/120"
+            }
             alt={this.props.title ? this.props.title : "Can't find image"}
             className="album-art"
           />
