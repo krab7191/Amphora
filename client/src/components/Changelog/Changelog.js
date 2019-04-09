@@ -10,6 +10,15 @@ class Changelog extends Component {
     this.state = {
       logs: [
         {
+          version: "0.46",
+          changes: [
+            "Get next 4 songs when playing next to last song",
+            "Audio volume slider bugfixes",
+            "Prompt user to retry on audio fetch error",
+            "Add native scroll bounce to legalBox"
+          ]
+        },
+        {
           version: "0.45",
           changes: [
             "Make up / down keys change volume",
