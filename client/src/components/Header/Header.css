@@ -1,46 +1,44 @@
-
 .white-text {
-    color: white;
+  color: white;
 }
 
 .main-navbar {
-    background-color: #0F87F5;
+  background-color: #0f87f5;
 }
 
 .margin-left-10 {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .padding-left-10 {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 
 .inline {
-    display: inline;
+  display: inline;
 }
 
 #root > div > div > nav > div > div > div > a {
-    color: white; 
+  color: white;
 }
 
-.navbar-default .navbar-toggle .icon-bar, .navbar-collapse.collapse.in>ul>li.dropdown.open>ul>li>a {
-    color: white;
+#root > div > div > nav > button {
+  background-color: white;
 }
 
-/* Hamburger icon */
-
-#root>div>div>div>nav>div>div.navbar-header>button>span {
-    background-color: white;
+@media only screen and (max-width: 576px) {
+  .logo {
+    max-width: 55px;
+  }
+  #root > div > div > nav > h1 {
+    font-size: 2.2rem;
+    margin: 0;
+    margin-left: -14px;
+  }
 }
 
-/* Dropdown background */
-
-#root>div>div>div>nav>div>div.navbar-header>button:hover, #root>div>div>div>nav>div>div.navbar-header>button:focus {
-    background-color: #00AED6;
-}
-
-/* Dropdown menu items */
-
-#root>div>div>div>nav>div>div.navbar-collapse.collapse.in>ul>li.dropdown>ul>li>a {
-    color: white;
+@media only screen and (max-width: 415px) {
+  .logo {
+    max-width: 50px;
+  }
 }

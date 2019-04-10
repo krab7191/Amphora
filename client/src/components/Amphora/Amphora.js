@@ -78,15 +78,16 @@ class Amphora extends React.Component {
 
   changeStation = event => {
     const { name } = event.target;
-    this.playPause();
-    this.setState(
-      {
+    if (this.state.currStation === name) {
+      return;
+    } else {
+      this.playPause();
+      this.setState({
         currStation: name,
         currSong: null,
         songs: []
-      },
-      () => {}
-    );
+      });
+    }
   };
 
   getStations = () => {
