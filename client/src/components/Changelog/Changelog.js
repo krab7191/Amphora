@@ -10,6 +10,12 @@ class Changelog extends Component {
     this.state = {
       logs: [ 
         {
+          version: "0.48.01",
+          changes: [
+            "Bugfixes for handling end of queue"
+          ]
+        },
+        {
           version: "0.48",
           changes: [
             "Make station dropdown responsive",
