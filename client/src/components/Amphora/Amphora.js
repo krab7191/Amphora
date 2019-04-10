@@ -152,7 +152,6 @@ class Amphora extends React.Component {
         if (i === this.state.songs.length - 3) {
           // Get new songs at second to last index
           this.getSongs(this.state.currStation);
-          return;
         }
         if (i < this.state.songs.length - 1) {
           this.setState({
