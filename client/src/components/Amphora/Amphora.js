@@ -218,8 +218,12 @@ class Amphora extends React.Component {
   };
 
   audioError = e => {
-    console.info("Audio error: ");
-    console.error(e);
+    const { target } = e;
+    const { error } = target;
+    console.log("Audio error: ");
+    console.warn(e.type);
+    console.error({ error });
+    console.log(`Audio state: ${e.target.remote.state}`);
   };
 
   render() {
