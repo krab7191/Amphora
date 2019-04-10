@@ -150,15 +150,17 @@ class Amphora extends React.Component {
           return song.title === this.state.currSong.title;
         });
         if (i === this.state.songs.length - 3) {
-          // Get new songs...
+          // Get new songs at second to last index
           this.getSongs(this.state.currStation);
+          return;
+        }
+        if (i < this.state.songs.length - 1) {
           this.setState({
             currSong: this.state.songs[i + 1]
           });
         } else {
-          this.setState({
-            currSong: this.state.songs[i + 1]
-          });
+          console.warn(`Wait to get new songs before skipping again!`);
+          return;
         }
       }
     );
@@ -246,9 +248,12 @@ class Amphora extends React.Component {
           ref={elem => {
             this.rap = elem;
           }}
-          src={this.state.currSong ? this.state.currSong.audioURL : ""}
+          src={this.state.currSong ? this.state.currSong.audioURL : null}
           onCanPlay={this.readyToPlay}
           onEnded={this.nextSong}
+          onPause={() => {
+            this.setState({ playing: "pause" });
+          }}
           onError={this.audioError}
           volume={this.state.volume}
           autoPlay

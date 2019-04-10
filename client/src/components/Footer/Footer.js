@@ -26,7 +26,11 @@ class Footer extends Component {
           <div className="controlBox" onClick={this.props.nextSong}>
             <FontAwesome
               name="step-forward"
-              onClick={this.props.nextSong}
+              onClick={e => {
+                // Prevent duplicate getSongs calls due to event bubbling
+                e.stopPropagation();
+                this.props.nextSong();
+              }}
               size="2x"
             />
           </div>
