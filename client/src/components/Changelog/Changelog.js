@@ -10,6 +10,13 @@ class Changelog extends Component {
     this.state = {
       logs: [
         {
+          version: "0.47",
+          changes: [
+            "Trigger show volume slider when using up/down arrows to adjust volume",
+            "Bugfix for albumArt url not found"
+          ]
+        },
+        {
           version: "0.46",
           changes: [
             "Get next 4 songs when playing next to last song",

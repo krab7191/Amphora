@@ -41,6 +41,7 @@ class Amphora extends React.Component {
           this.playPause();
           break;
         case "ArrowUp":
+          this.triggerShowVolumeSlider();
           let vup = Math.round((this.state.volume + 0.1) * 100) / 100;
           if (vup > 1) {
             vup = 1;
@@ -48,6 +49,7 @@ class Amphora extends React.Component {
           this.volumeHandler(vup);
           break;
         case "ArrowDown":
+          this.triggerShowVolumeSlider();
           let v = Math.round((this.state.volume - 0.1) * 100) / 100;
           if (v < 0) {
             v = 0;
@@ -62,6 +64,17 @@ class Amphora extends React.Component {
       }
     };
   }
+
+  triggerShowVolumeSlider = () => {
+    if (window.TO) {
+      clearTimeout(window.TO);
+    }
+    const volSlider = document.getElementById("volume-slider");
+    volSlider.style.display = "block";
+    window.TO = setTimeout(() => {
+      volSlider.style.display = "none";
+    }, 1800);
+  };
 
   changeStation = event => {
     const { name } = event.target;
@@ -182,12 +195,15 @@ class Amphora extends React.Component {
   volumeHandler = e => {
     this.setState({ volume: e });
     if (e === 0) {
-      this.setState({
-        volumeIcon: "volume-mute",
-        playing: "pause"
-      }, () => {
-        this.playPause();
-      });
+      this.setState(
+        {
+          volumeIcon: "volume-mute",
+          playing: "pause"
+        },
+        () => {
+          this.playPause();
+        }
+      );
     } else if (e >= 0.75) {
       this.setState({
         volumeIcon: "volume-up"
