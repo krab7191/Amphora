@@ -1,20 +1,19 @@
 header {
-    position: fixed;
-    top: 0;
-    width: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 header div {
-    margin: 0 auto;
-    width: 260px;
+  margin: 0 auto;
+  width: 260px;
 }
 
 .logo {
-    height: 65px !important;
-    width: auto;
-    border-radius: 40%;
-    box-shadow: 0 1px 5px;
-    padding: 3px;
-    content: url("../../images/logo.png");
-    max-width: 65px;
+  width: auto;
+  border-radius: 40%;
+  box-shadow: 0 1px 5px;
+  padding: 3px;
+  content: url("../../images/logo.png");
+  max-width: 65px;
 }

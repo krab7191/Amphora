@@ -12,7 +12,7 @@ class App extends React.Component {
     this.state = {
       loggedIn: false,
       user: null,
-      releaseVersion: "0.46",
+      releaseVersion: "0.48",
       lastLocalVersion: null,
       showChangelog: true,
       changelogHidden: false

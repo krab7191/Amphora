@@ -8,7 +8,15 @@ class Changelog extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      logs: [
+      logs: [ 
+        {
+          version: "0.48",
+          changes: [
+            "Make station dropdown responsive",
+            "Minor media query tweaks to header",
+            "Prevent reload when clicking current station"
+          ]
+        },
         {
           version: "0.47",
           changes: [
