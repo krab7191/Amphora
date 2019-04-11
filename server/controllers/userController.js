@@ -9,6 +9,7 @@ const { Client } = require("pandora.js");
 const pandoraClient = new Client();
 
 pandoraClient.on("ready", () => {
+  console.log("Pandora Client is ready!!");
 });
 
 // Defining methods for the userController
@@ -40,12 +41,21 @@ module.exports = {
     const { username, password } = req.body;
     pandoraClient
       .login(username, password)
+      // Promise returns nothing here, all handled by pandoraClient
       .then(() => {
+        const {cookies} = pandoraClient.user.client.rest;
+        // console.log(cookies);
+        const cookieObj = {domain: cookies.Domain, expires: cookies.Expires, maxAge: cookies['Max-Age'], path: cookies.Path, wrt: cookies.wrt};
+        
+        res.cookie("csrftoken", cookies.csrftoken, cookieObj);
+        res.cookie("at", cookies.at, cookieObj);
+
         res.json({ user: parseUserCredentials(pandoraClient.user) });
       })
       .catch(err => {
         console.log(`pandoraJS error: ${err}`);
-        res.json({ message: "Authentication failed" });
+        // res.json({ message: "Authentication failed" });
+        res.end("Bah humbug");
       });
   },
   authenticate: (req, res) => {
@@ -60,6 +70,8 @@ module.exports = {
   pandoraClient: pandoraClient
 };
 
+
+// Local helpers
 parseUserCredentials = obj => {
   const { username, email, token, kruxToken, listenerToken } = obj.client.user;
   const user = {

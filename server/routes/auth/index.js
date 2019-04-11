@@ -11,6 +11,7 @@ router.get('/user', userController.getUser);
 
 // Login route using pandoraJS
 router.post('/login', userController.pandoraAuth);
+// router.post('/login', userController.restAuth);
 
 // router.post('/logout', userController.logout);
 
