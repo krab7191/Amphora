@@ -254,9 +254,6 @@ class Amphora extends React.Component {
           src={this.state.currSong ? this.state.currSong.audioURL : null}
           onCanPlay={this.readyToPlay}
           onEnded={this.nextSong}
-          onPause={() => {
-            this.setState({ playing: "pause" });
-          }}
           onError={this.audioError}
           volume={this.state.volume}
           autoPlay
