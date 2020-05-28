@@ -27,6 +27,17 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); // will call the deserializeUser
 
+// Redirect all incoming insecure requests to HTTPS
+app.use((req, res, next) => {
+  const { headers, url } = req;
+  console.log(headers['x-forwarded-proto']);
+  if (headers['x-forwarded-proto'] !== 'https') {
+    res.redirect('https://' + headers.host + url);
+  } else {
+    next();
+  }
+});
+
 // If its production environment!
 if (process.env.NODE_ENV === 'production') {
 	const path = require('path');
