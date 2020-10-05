@@ -13,9 +13,9 @@
     "heroku-postbuild": "npm run build"
   },
   "engines": {
-    "node": "10.13.0",
-    "npm": "6.4.1",
-    "yarn": "1.12.3"
+    "node": "12.12.0",
+    "npm": "6.14.4",
+    "yarn": "1.22.5"
   },
   "author": "Karsten Rabe (krab7191)",
   "license": "ISC",
